@@ -1,0 +1,2 @@
+class Benefited < ApplicationRecord
+end
