@@ -1,0 +1,2 @@
+class TypeOfHelp < ApplicationRecord
+end

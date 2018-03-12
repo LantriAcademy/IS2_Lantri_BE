@@ -1,0 +1,2 @@
+class StatusOfHelp < ApplicationRecord
+end
