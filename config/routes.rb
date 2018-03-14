@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :pictures
+  resources :status_of_helps
+  resources :type_of_helps
+  resources :interests
   resources :evidences
   resources :supports
   resources :helps
