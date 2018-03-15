@@ -2,7 +2,6 @@ class Support < ApplicationRecord
     has_one :help
     has_many :pictures, as: :imageable
     
-    validates_associated :help
     validates_associated :pictures
     
     validates :date, :description, presence: true
