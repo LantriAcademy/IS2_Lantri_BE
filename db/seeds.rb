@@ -3,19 +3,64 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' 
+
+    
+TypeOfHelp.create([{
+    name: "Monetaria"
+}])
+TypeOfHelp.create([{
+    name: "Voluntariado"
+}])
+TypeOfHelp.create([{
+    name: "Regalos"
+}])
+
+StatusOfHelp.create([{
+    name: "Iniciada"
+}])
+
+StatusOfHelp.create([{
+    name: "En proceso"
+}])
+
+StatusOfHelp.create([{
+    name: "Completada"
+}])
+
+Interest.create([{
+    name: "Salud"
+}])
+
+Interest.create([{
+    name: "Futbol"
+}])
+
+Interest.create([{
+    name: "Cocina"
+}])
+
+Interest.create([{
+    name: "Ciencia"
+}])
+
+Interest.create([{
+    name: "Salud"
+}])
+
 15.times do
     Foundation.create([{
         name: Faker::Name.first_name ,
         direction: Faker::Address.street_address  ,
         latitude: Faker::Address.latitude ,    
-        longitude: Faker::Address.longitude 
+        longitude: Faker::Address.longitude,
+        interests: Interest.where(id: Faker::Number.between(1, 5)..5)
     }])
     end
     
 15.times do
     Admin.create([{
-        bio: Faker::Cat.breed ,
+        bio: Faker::Lorem.sentence ,
         name: Faker::Name.first_name ,
         lastname: Faker::Name.last_name ,
         user: Faker::Name.first_name ,
@@ -34,7 +79,8 @@
         user: Faker::Name.first_name ,
         password: Faker::Internet.password ,    
         email: Faker::Internet.email ,
-        phone: Faker::PhoneNumber.phone_number     
+        phone: Faker::PhoneNumber.phone_number,
+        interests: Interest.where(id: Faker::Number.between(1, 5)..5)
     }])
     end
 
@@ -43,7 +89,7 @@
     Benefited.create([{
         name: Faker::Name.first_name ,
         age: Faker::Number.between(4, 18)  ,
-        preferences: Faker::Cat.breed ,   
+        preferences: Faker::Lorem.sentence,   
         foundation: Foundation.find(Faker::Number.between(1, 15)) 
     }])
     end
@@ -70,10 +116,12 @@
 
 15.times do
     Help.create([{
-        startDate: Faker::Date.forward(230) ,
-        contributor: Contributor.find(Faker::Number.between(1, 15)),
+        description: Faker::Lorem.sentence,
+        startDate: Faker::Date.forward(230),
+        status_of_help: StatusOfHelp.find(Faker::Number.between(1, 3)),
+        type_of_help: TypeOfHelp.find(Faker::Number.between(1, 3)),
         benefited: Benefited.find(Faker::Number.between(1, 15)),
-        description: Faker::Lorem.sentence   
+        contributor: Contributor.find(Faker::Number.between(1, 10))
     }])
     end
 
@@ -84,5 +132,3 @@
         description: Faker::Lorem.sentence   
     }])
     end
-
-

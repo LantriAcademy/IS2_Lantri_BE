@@ -4,6 +4,6 @@ class StatusOfHelp < ApplicationRecord
 
     validates :name, presence: true
     validates :name, length: { maximum: 45 }
-    validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
+    validates :name, format: { with: /\A[a-zA-Z\s]+\z/,message: "only allows letters" }
 
 end
