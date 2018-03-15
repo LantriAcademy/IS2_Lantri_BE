@@ -9,11 +9,14 @@ class Admin < ApplicationRecord
     has_one :foundation
     has_many :pictures, as: :imageable
 
+    validates_associated :pictures
+    validates_associated :foundation
+
     validates :user, :pass, :name, :lastname , :email, :phone, presence: true
     validates :name, :user, :lastname, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
     validates :phone, numericality: true
     validates :email, email: true
     validates :bio, length: {maximum: 500 }, allow_nil: true
     validates :user, length: {maximum: 30 }
-    
+
 end
