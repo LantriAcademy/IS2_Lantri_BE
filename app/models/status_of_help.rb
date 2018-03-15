@@ -1,7 +1,6 @@
 class StatusOfHelp < ApplicationRecord
     has_one :help
 
-    validates_associated :help
 
     validates :name, presence: true
     validates :name, length: { maximum: 45 }

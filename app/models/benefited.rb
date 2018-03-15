@@ -7,6 +7,7 @@ class Benefited < ApplicationRecord
     validates_associated :helps
     validates_associated :pictures
 
-    validates :age, presence: true
+    validates :age,:name, presence: true
+    validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
 
 end

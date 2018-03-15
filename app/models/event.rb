@@ -6,8 +6,7 @@ class Event < ApplicationRecord
     
     validates_associated :foundation
     validates_associated :evidences
-    validates_associated :contributors
-    
+
     validates :name, :startDate, :direction, :description, presence: true
     validates :name, length: { maximum: 45 }
     validates :direction, length: { maximum: 45 }
