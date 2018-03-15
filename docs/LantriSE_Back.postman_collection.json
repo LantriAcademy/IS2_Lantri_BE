@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"pass\": \"12345678\", \"user\": \"Nicolas\", \"name\":\"Nico\", \"lastname\":\"Campu\", \"phone\":\"1234\", \"bio\":\"Soy un hombre soltero, no tengo compromiso\"}}"
+					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Nicolas\", \"name\":\"Nico\", \"lastname\":\"Campu\", \"phone\":\"1234\", \"bio\":\"Soy un hombre soltero, no tengo compromiso\"}}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/admins",
@@ -428,7 +428,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"pass\": \"12345678\", \"user\": \"Luis\", \"name\":\"Fernando\", \"lastname\":\"Castro\", \"phone\":\"1234\", \"bio\": \"\"}}"
+					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Luis\", \"name\":\"Fernando\", \"lastname\":\"Castro\", \"phone\":\"1234\", \"bio\": \"\"}}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/admins/2",
