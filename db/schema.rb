@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180313204647) do
 
+  #Campuzano
   create_table "admins", force: :cascade do |t|
     t.string "bio"
     t.string "user"
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["picture_id"], name: "index_evidences_on_picture_id"
   end
 
+  #Campuzano  
   create_table "foundations", force: :cascade do |t|
     t.string "name"
     t.string "direction"
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["type_of_help_id"], name: "index_helps_on_type_of_help_id"
   end
 
+  #Campuzano
   create_table "interests", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -135,6 +138,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["foundation_id"], name: "index_interests_on_foundation_id"
   end
 
+  #Campuzano
   create_table "pictures", force: :cascade do |t|
     t.string "name"
     t.integer "imageable_id"
