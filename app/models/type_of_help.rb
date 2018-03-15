@@ -5,5 +5,4 @@ class TypeOfHelp < ApplicationRecord
     validates :name, length: { maximum: 45 }
     validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
     
-    
 end
