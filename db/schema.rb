@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["foundation_id"], name: "index_admins_on_foundation_id"
     t.index ["picture_id"], name: "index_admins_on_picture_id"
   end
-
+#Jmalvarezd
   create_table "benefiteds", force: :cascade do |t|
     t.integer "age"
     t.string "preferences"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["help_id"], name: "index_benefiteds_on_help_id"
     t.index ["picture_id"], name: "index_benefiteds_on_picture_id"
   end
-
+#Jmalvarezd
   create_table "contributors", force: :cascade do |t|
     t.string "description"
     t.string "user"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["interest_id"], name: "index_foundations_on_interest_id"
     t.index ["picture_id"], name: "index_foundations_on_picture_id"
   end
-
+#Jmalvarezd
   create_table "helps", force: :cascade do |t|
     t.string "description"
     t.datetime "startDate"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.datetime "updated_at", null: false
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
   end
-
+#Jmalvarezd
   create_table "status_of_helps", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
