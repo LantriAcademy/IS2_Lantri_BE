@@ -1,0 +1,585 @@
+{
+	"info": {
+		"name": "LantriSE_Back",
+		"_postman_id": "0c27600c-964f-80df-cc19-31e76fef87b9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Nicolas\", \"name\":\"Nico\", \"lastname\":\"Campu\", \"phone\":\"1234\", \"bio\":\"Soy un hombre soltero, no tengo compromiso\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/admins",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"admins"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add Support",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"support\": {\"description\": \"Hey my friend\", \"date\": \"15/03/2018\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/supports",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"supports"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add Contributor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"contributor\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Nicolas\", \"name\":\"Nico\", \"lastname\":\"Campu\", \"phone\":\"1234\", \"description\":\"Hey\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/contributors",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"contributors"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add Interest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"interest\": {\"name\": \"javascript\", \"description\":\"Hey\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/interests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"interests"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add Foundation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"foundation\": {\"name\": \"Laspulgas\", \"direction\": \"Cr 5 a\", \"latitude\": \"4.505053\", \"longitude\":\"5.79707\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/foundations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"foundations"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/admins/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"admins",
+						"2"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Foundation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/foundations/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"foundations",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Support",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/supports/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"supports",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contributor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/contributors/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"contributors",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Interest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/interests/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"interests",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/admins/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"admins",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contributors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/contributors/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"contributors",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Support",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/supports/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"supports",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Foundations",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/foundations/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"foundations",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete interest",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:3000/interests/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"interests",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put Admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"admin\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Luis\", \"name\":\"Fernando\", \"lastname\":\"Castro\", \"phone\":\"1234\", \"bio\": \"\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/admins/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"admins",
+						"2"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put Support",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"support\": {\"description\": \"Hey my friend\", \"date\": \"14/03/2018\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/supports/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"supports",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put Foundation",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"foundation\": {\"name\": \"Nosonlasapulgas\", \"direction\": \"Cr 5 a\", \"latitude\": \"4.505053\", \"longitude\":\"5.79707\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/foundations/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"foundations",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put Interest",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"interest\": {\"name\": \"java\", \"description\":\"Hey\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/interests/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"interests",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put Contributor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"contributor\": {\"email\": \"ncampuzanoa@unal.edu.co\", \"password\": \"12345678\", \"user\": \"Luis\", \"name\":\"Castro\", \"lastname\":\"Campu\", \"phone\":\"1234\", \"description\":\"Hey\"}}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/contributors/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"contributors",
+						"2"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
