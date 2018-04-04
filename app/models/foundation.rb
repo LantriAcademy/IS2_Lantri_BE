@@ -23,5 +23,9 @@ class Foundation < ApplicationRecord
     def self.ActualSize()
         return Foundation.count()
     end
+
+    #def sel.GetBenefiteds(id)
+     #   return Foundation.find(id).joins(:benefiteds)
+    #end
     
 end
