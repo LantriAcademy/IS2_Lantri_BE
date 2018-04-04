@@ -15,4 +15,9 @@ class Foundation < ApplicationRecord
     validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
     validates :direction, length: {maximum: 100 }
     validates :latitude, :longitude, numericality: {only_float: true}
+    
+    def self.GetFundationPage(page)
+        return Foundation.limit(6)
+    end
+    
 end

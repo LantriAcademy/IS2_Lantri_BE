@@ -38,6 +38,11 @@ class FoundationsController < ApplicationController
     @foundation.destroy
   end
 
+  def foundation_page
+      @foundations  = Foundation.GetFundationPage(params[:page])
+      render json: @foundations
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_foundation
@@ -48,4 +53,7 @@ class FoundationsController < ApplicationController
     def foundation_params
       params.require(:foundation).permit(:name, :direction, :latitude, :longitude)
     end
+
+   
+
 end
