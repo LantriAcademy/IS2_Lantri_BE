@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: interests
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  description    :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  contributor_id :integer
+#  foundation_id  :integer
+#
+
 class Interest < ApplicationRecord
     has_many :interest_contributors
     has_many :contributors, through: :interest_contributors
