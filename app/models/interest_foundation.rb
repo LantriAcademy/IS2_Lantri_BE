@@ -1,0 +1,2 @@
+class InterestFoundation < ApplicationRecord
+end
