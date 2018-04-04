@@ -6,10 +6,16 @@ class EmailValidator < ActiveModel::EachValidator
     end
 end
 class Contributor < ApplicationRecord
-    has_and_belongs_to_many :events
+    
+    has_many :contributors_events
+    has_many :events ,through: :contributors_events
+    
     has_many :helps
-    has_many :interests
-    has_many :pictures, as: :imageable
+    
+    has_many :interest_contributors
+    has_many :interests ,through: :interest_contributors
+    
+    has_many :pictures , as: :imageable
 
     validates_associated :events
     validates_associated :helps

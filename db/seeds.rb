@@ -59,7 +59,7 @@ Interest.create([{
     end
     
 15.times do
-    Admin.create([{
+    Director.create([{
         bio: Faker::Lorem.sentence ,
         name: Faker::Name.first_name ,
         lastname: Faker::Name.last_name ,
