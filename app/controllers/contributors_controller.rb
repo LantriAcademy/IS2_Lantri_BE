@@ -12,6 +12,8 @@ class ContributorsController < ApplicationController
   def show
     render json: @contributor
   end
+  
+  
 
   # POST /contributors
   def create
