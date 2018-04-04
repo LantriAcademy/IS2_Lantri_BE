@@ -2,7 +2,9 @@ class Event < ApplicationRecord
     
     belongs_to :foundation
     has_many :evidences
-    has_and_belongs_to_many :contributors
+    
+    has_many :contributors_events
+    has_many :contributors ,through: :contributors_events
     
     validates_associated :foundation
     validates_associated :evidences

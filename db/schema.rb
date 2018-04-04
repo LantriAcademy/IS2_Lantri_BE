@@ -10,23 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313204647) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string "bio"
-    t.string "user"
-    t.string "password"
-    t.string "name"
-    t.string "lastname"
-    t.string "email"
-    t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "foundation_id"
-    t.integer "picture_id"
-    t.index ["foundation_id"], name: "index_admins_on_foundation_id"
-    t.index ["picture_id"], name: "index_admins_on_picture_id"
-  end
+ActiveRecord::Schema.define(version: 20180404011311) do
 
   create_table "benefiteds", force: :cascade do |t|
     t.integer "age"
@@ -40,6 +24,15 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["foundation_id"], name: "index_benefiteds_on_foundation_id"
     t.index ["help_id"], name: "index_benefiteds_on_help_id"
     t.index ["picture_id"], name: "index_benefiteds_on_picture_id"
+  end
+
+  create_table "contributor_events", force: :cascade do |t|
+    t.integer "contributor_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contributor_id"], name: "index_contributor_events_on_contributor_id"
+    t.index ["event_id"], name: "index_contributor_events_on_event_id"
   end
 
   create_table "contributors", force: :cascade do |t|
@@ -65,6 +58,22 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.integer "event_id", null: false
     t.index ["contributor_id"], name: "index_contributors_events_on_contributor_id"
     t.index ["event_id"], name: "index_contributors_events_on_event_id"
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.string "bio"
+    t.string "user"
+    t.string "password"
+    t.string "name"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "foundation_id"
+    t.integer "picture_id"
+    t.index ["foundation_id"], name: "index_directors_on_foundation_id"
+    t.index ["picture_id"], name: "index_directors_on_picture_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -100,12 +109,12 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
-    t.integer "admin_id"
+    t.integer "director_id"
     t.integer "benefited_id"
     t.integer "interest_id"
     t.integer "picture_id"
-    t.index ["admin_id"], name: "index_foundations_on_admin_id"
     t.index ["benefited_id"], name: "index_foundations_on_benefited_id"
+    t.index ["director_id"], name: "index_foundations_on_director_id"
     t.index ["event_id"], name: "index_foundations_on_event_id"
     t.index ["interest_id"], name: "index_foundations_on_interest_id"
     t.index ["picture_id"], name: "index_foundations_on_picture_id"
@@ -126,6 +135,24 @@ ActiveRecord::Schema.define(version: 20180313204647) do
     t.index ["status_of_help_id"], name: "index_helps_on_status_of_help_id"
     t.index ["support_id"], name: "index_helps_on_support_id"
     t.index ["type_of_help_id"], name: "index_helps_on_type_of_help_id"
+  end
+
+  create_table "interest_contributors", force: :cascade do |t|
+    t.integer "contributor_id"
+    t.integer "interest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contributor_id"], name: "index_interest_contributors_on_contributor_id"
+    t.index ["interest_id"], name: "index_interest_contributors_on_interest_id"
+  end
+
+  create_table "interest_foundations", force: :cascade do |t|
+    t.integer "foundation_id"
+    t.integer "interest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["foundation_id"], name: "index_interest_foundations_on_foundation_id"
+    t.index ["interest_id"], name: "index_interest_foundations_on_interest_id"
   end
 
   create_table "interests", force: :cascade do |t|

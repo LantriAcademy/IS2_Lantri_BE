@@ -1,6 +1,6 @@
-class CreateAdmins < ActiveRecord::Migration[5.1]
+class CreateDirectors < ActiveRecord::Migration[5.1]
   def change
-    create_table :admins do |t|
+    create_table :directors do |t|
       t.string :bio
       t.string :user
       t.string :password
@@ -10,6 +10,7 @@ class CreateAdmins < ActiveRecord::Migration[5.1]
       t.string :phone
 
       t.timestamps
+      
     end
   end
 end

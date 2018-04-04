@@ -1,0 +1,2 @@
+class ContributorEvent < ApplicationRecord
+end

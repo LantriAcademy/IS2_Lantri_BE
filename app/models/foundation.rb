@@ -1,8 +1,11 @@
 class Foundation < ApplicationRecord
-    has_one :admin
+    has_one :director
     has_many :events
     has_many :benefiteds
-    has_many :interests
+    
+    has_many :interest_foundations
+    has_many :interests,through: :interest_foundations
+    
     has_many :pictures, as: :imageable
 
     validates_associated :interests

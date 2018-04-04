@@ -5,7 +5,7 @@ class EmailValidator < ActiveModel::EachValidator
       end
     end
 end
-class Admin < ApplicationRecord
+class Director < ApplicationRecord
     has_one :foundation
     has_many :pictures, as: :imageable
 
