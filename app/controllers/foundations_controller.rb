@@ -42,6 +42,11 @@ class FoundationsController < ApplicationController
       @foundations  = Foundation.GetFundationPage(params[:page])
       render json: @foundations
   end
+  
+  def foundation_size
+    @size = Foundation.ActualSize()
+    render json: @size
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -53,7 +58,4 @@ class FoundationsController < ApplicationController
     def foundation_params
       params.require(:foundation).permit(:name, :direction, :latitude, :longitude)
     end
-
-   
-
 end

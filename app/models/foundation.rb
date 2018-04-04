@@ -20,4 +20,8 @@ class Foundation < ApplicationRecord
         return Foundation.limit(6).offset((page.to_i-1)*6)
     end
     
+    def self.ActualSize()
+        return Foundation.count()
+    end
+    
 end
