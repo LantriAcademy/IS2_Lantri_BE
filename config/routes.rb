@@ -15,9 +15,20 @@ Rails.application.routes.draw do
   resources :supports
   resources :helps
   resources :benefiteds
+  
   resources :foundations
+  #Foundations routes 
+  get '/foundations/page/:page', to: 'foundations#foundation_page'
+  get '/foundation/size', to: 'foundations#foundation_size'
+
+
+
   resources :directors
   resources :events
+  
+
   resources :contributors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+ 
 end
