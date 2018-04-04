@@ -71,6 +71,17 @@ Interest.create([{
    }])
     end
 
+Contributor.create([{
+        description: Faker::Cat.breed ,
+        name: "LUIS" ,
+        lastname: "CASTRO" ,
+        user: "moimo",
+        password:  "12345678",
+        email: "m@g.com" ,
+        phone: Faker::PhoneNumber.phone_number,
+        interests: Interest.where(id: Faker::Number.between(1, 5)..5)
+    }])
+
 15.times do
     Contributor.create([{
         description: Faker::Cat.breed ,
