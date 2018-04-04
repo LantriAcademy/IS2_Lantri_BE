@@ -7,8 +7,13 @@ class EmailValidator < ActiveModel::EachValidator
 end
 class Contributor < ApplicationRecord
     
-    has_many :contributors_events
-    has_many :events ,through: :contributors_events
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :trackable, :validatable
+
+    has_many :contributor_events
+    has_many :events ,through: :contributor_events
     
     has_many :helps
     
@@ -17,12 +22,11 @@ class Contributor < ApplicationRecord
     
     has_many :pictures , as: :imageable
 
-    validates_associated :events
+    
     validates_associated :helps
-    validates_associated :interests
-    validates_associated :pictures
+    
 
-    validates :user, :password, :name, :lastname , :email, :phone, presence: true
+    validates :user, :name, :lastname , :email, :phone, presence: true
     validates :name, :user, :lastname, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
     #validates :phone, numericality: true
     validates :email, email: true
