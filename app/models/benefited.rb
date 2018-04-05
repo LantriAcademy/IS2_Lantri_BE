@@ -24,4 +24,13 @@ class Benefited < ApplicationRecord
     validates :age,:name, presence: true
     validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
 
+
+    def self.GetBeneficiedFoundationPage(page,found_id)
+        return Benefited.where(foundation: found_id).limit(6).offset((page.to_i-1)*6)
+    end
+    
+    def self.BeneficiedFoundationActualSize(found_id)
+        return Benefited.where(foundation_id: found_id).count()
+    end
+    
 end
