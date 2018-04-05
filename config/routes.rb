@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :directors
+  resources :events
+  resources :contributors
+  
   devise_for :directors
   devise_for :contributors
   
@@ -31,11 +36,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :directors
-  resources :events
-  
 
-  resources :contributors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  
