@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-    
+class SigninContributorController < ApplicationController
+
    def create
        
        contri = Contributor.where(email: params[:email]).first

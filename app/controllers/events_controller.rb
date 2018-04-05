@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
-
     render json: @events
   end
 
@@ -46,6 +45,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:startDate, :direction, :latitude, :longitude, :description)
+      params.require(:event).permit(:startDate, :direction, :latitude, :longitude, :description, :foundation_id, :name)
     end
 end

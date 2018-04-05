@@ -150,11 +150,16 @@ GEM
     will_paginate (3.1.6)
 
 PLATFORMS
+  rack-unknown
   ruby
+  spring-unknown
+  tzinfo-unknown
+  unknown
   x64-mingw32
 
 DEPENDENCIES
   annotate
+  bcrypt (~> 3.1.7)
   byebug
   devise
   faker (~> 1.7)
