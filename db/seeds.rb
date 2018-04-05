@@ -58,6 +58,19 @@ Interest.create([{
     }])
     end
     
+Director.create([{
+        bio: Faker::Lorem.sentence ,
+        name: "FERNANDO" ,
+        lastname: "CASTRO",
+        user: "LCP",
+        password: "12345678",    
+        email: "j@c.com",
+        phone: Faker::PhoneNumber.phone_number ,
+        foundation: Foundation.find(1)
+   }])  
+  
+  
+    
 15.times do
     Director.create([{
         bio: Faker::Lorem.sentence ,

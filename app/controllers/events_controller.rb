@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  acts_as_token_authentication_handler_for Director, only: [:create]
+  
   before_action :set_event, only: [:show, :update, :destroy]
 
   # GET /events
@@ -15,12 +17,16 @@ class EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
-
-    if @event.save
-      render json: @event, status: :created, location: @event
+    if Director.where(authentication_token: params[:director_token]).first.foundation_id == @event.foundation_id
+      if @event.save
+        render json: @event, status: :created, location: @event
+      else
+        render json: @event.errors, status: :unauthorized
+      end
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: {"error": "unauthorized"}, status: :unprocessable_entity
     end
+
   end
 
   # PATCH/PUT /events/1
