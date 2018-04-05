@@ -22,6 +22,7 @@ class ContributorsController < ApplicationController
     @contributor = Contributor.new(contributor_params)
 
     if @contributor.save
+      ContributorMailer.welcome_email(@contributor).deliver_later
       render json: @contributor, status: :created, location: @contributor
     else
       render json: @contributor.errors, status: :unprocessable_entity
