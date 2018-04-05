@@ -22,6 +22,6 @@ test:
 
 production:
   adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  url: postgres://ixgqmvxxaylnqd:c14c2f47adf95482ce1b8a75eda779c662c93f1358f81c97ddaa71415a4a7d85@ec2-107-21-126-193.compute-1.amazonaws.com:5432/d21q3cbh2g05av
+  host: localhost
+  username: user
+  database: app-dev
