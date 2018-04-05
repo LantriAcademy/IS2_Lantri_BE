@@ -48,6 +48,11 @@ class FoundationsController < ApplicationController
     render json: @size
   end
 
+  #def foundation_benefiteds
+   # @benefiteds  = Foundation.GetBenefiteds(params[:id])
+    #render json: @benefiteds
+  #end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_foundation
