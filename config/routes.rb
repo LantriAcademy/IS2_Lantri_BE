@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :contributors, defaults: { format: :json }
+  
+  resources :directors
+  resources :events
+  resources :contributors
+  
+  devise_for :directors
+  devise_for :contributors
+  
   resources :foundations do
       resources :benefiteds
   end
@@ -8,6 +15,8 @@ Rails.application.routes.draw do
   end
   
   resources :signin_contributor, only: [:create, :destroy]
+  resources :signin_director, only: [:create, :destroy]
+
   resources :contributor_events
   resources :interest_foundations
   resources :interest_contributors
@@ -27,11 +36,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :directors
-  resources :events
-  
 
-  resources :contributors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  
