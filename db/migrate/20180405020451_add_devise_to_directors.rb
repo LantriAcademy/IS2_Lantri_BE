@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToContributors < ActiveRecord::Migration[5.1]
+class AddDeviseToDirectors < ActiveRecord::Migration[5.1]
   def self.up
-    change_table :contributors do |t|
+    change_table :directors do |t|
       ## Database authenticatable
       t.string :encrypted_password, null: false, default: ""
 
@@ -36,11 +36,10 @@ class AddDeviseToContributors < ActiveRecord::Migration[5.1]
       # t.timestamps null: false
     end
 
-    add_index :contributors, :email,                unique: true
-    add_index :contributors, :reset_password_token, unique: true
-    # add_index :contributors, :confirmation_token,   unique: true
-    # add_index :contributors, :unlock_token,         unique: true
+    add_index :directors, :email,                unique: true
+    add_index :directors, :reset_password_token, unique: true
+    # add_index :directors, :confirmation_token,   unique: true
+    # add_index :directors, :unlock_token,         unique: true
   end
-
 
 end

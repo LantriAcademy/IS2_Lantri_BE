@@ -1,10 +1,10 @@
-class SessionsController < ApplicationController
-    
+class SigninContributorController < ApplicationController
+
    def create
        
        contri = Contributor.where(email: params[:email]).first
        
-        if contri.valid_password?(params[:password])
+        if contri && contri.valid_password?(params[:password])
            render json: contri.as_json(only: [:email, :authentication_token]), status: :created
         else
             head(:unauthorized)
@@ -14,7 +14,4 @@ class SessionsController < ApplicationController
    def destroy
    end
    
-   
-    
-    
 end

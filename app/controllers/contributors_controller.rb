@@ -1,4 +1,5 @@
 class ContributorsController < ApplicationController
+  #acts_as_token_authentication_handler_for Contributor
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
@@ -12,10 +13,9 @@ class ContributorsController < ApplicationController
   def show
     render json: @contributor
   end
-  
-  
 
-  # POST /contributors
+  
+    # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)
 
@@ -50,4 +50,5 @@ class ContributorsController < ApplicationController
     def contributor_params
       params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone)
     end
+    
 end

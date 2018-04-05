@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  #devise_for :contributors
-  namespace :contributor do
+  devise_for :directors
+  devise_for :contributors
+  
+  resources :foundations do
+      resources :benefiteds
+  end
+  resources :contributors do
       resources :events
   end
-  resources :sessions, only: [:create, :destroy]
+  
+  resources :signin_contributor, only: [:create, :destroy]
+  resources :signin_director, only: [:create, :destroy]
+
   resources :contributor_events
   resources :interest_foundations
   resources :interest_contributors
