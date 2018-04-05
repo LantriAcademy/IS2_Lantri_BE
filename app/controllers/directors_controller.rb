@@ -1,4 +1,6 @@
 class DirectorsController < ApplicationController
+    #acts_as_token_authentication_handler_for Director
+
   before_action :set_director, only: [:show, :update, :destroy]
 
   # GET /directors

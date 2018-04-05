@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :contributors, defaults: { format: :json }
+  devise_for :directors
+  devise_for :contributors
+  
   resources :foundations do
       resources :benefiteds
   end
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   end
   
   resources :signin_contributor, only: [:create, :destroy]
+  resources :signin_director, only: [:create, :destroy]
+
   resources :contributor_events
   resources :interest_foundations
   resources :interest_contributors

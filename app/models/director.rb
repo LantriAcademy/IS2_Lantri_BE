@@ -6,13 +6,19 @@ class EmailValidator < ActiveModel::EachValidator
     end
 end
 class Director < ApplicationRecord
+  acts_as_token_authenticatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  
     has_one :foundation
     has_many :pictures, as: :imageable
 
     validates_associated :pictures
     validates_associated :foundation
 
-    validates :user, :password, :name, :lastname , :email, :phone, presence: true
+    validates :user, :name, :lastname , :email, :phone, presence: true
     validates :name, :user, :lastname, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
     #validates :phone, numericality: true
     validates :email, email: true
