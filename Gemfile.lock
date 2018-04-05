@@ -171,11 +171,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-<<<<<<< HEAD
   bcrypt (~> 3.1.7)
-=======
   annotate
->>>>>>> debac32265be5dcf565271fa102b46a566d8cde2
   byebug
   devise
   faker (~> 1.7)
