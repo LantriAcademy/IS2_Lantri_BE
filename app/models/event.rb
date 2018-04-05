@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id             :integer          not null, primary key
+#  startDate      :datetime
+#  direction      :string
+#  latitude       :float
+#  longitude      :float
+#  description    :float
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  foundation_id  :integer
+#  evidence_id    :integer
+#  contributor_id :integer
+#
+
 class Event < ApplicationRecord
     
     belongs_to :foundation
@@ -6,8 +23,8 @@ class Event < ApplicationRecord
     has_many :contributor_events
     has_many :contributors ,through: :contributor_events
     
-    validates_associated :foundation
-    validates_associated :evidences
+    #validates_associated :foundation
+    #validates_associated :evidences
 
     validates :name, :startDate, :direction, :description, presence: true
     validates :name, length: { maximum: 45 }
