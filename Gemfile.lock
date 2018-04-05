@@ -159,7 +159,6 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  bcrypt (~> 3.1.7)
   byebug
   devise
   faker (~> 1.7)

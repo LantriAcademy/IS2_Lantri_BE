@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-    #acts_as_token_authentication_handler_for Contributor
+  #acts_as_token_authentication_handler_for Contributor
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
