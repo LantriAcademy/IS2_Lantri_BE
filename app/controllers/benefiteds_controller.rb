@@ -38,6 +38,16 @@ class BenefitedsController < ApplicationController
     @benefited.destroy
   end
 
+  def benefitedsfoundation_page
+      @benefiteds  = Benefited.GetBeneficiedFoundationPage(params[:page],params[:foundation_id])
+      render json: @benefiteds
+  end
+  
+  def benefitedsfoundation_size
+    @size = Benefited.BeneficiedFoundationActualSize(params[:foundation_id])
+    render json: @size
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_benefited

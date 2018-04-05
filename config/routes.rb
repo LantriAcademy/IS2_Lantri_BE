@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   get '/foundations/page/:page', to: 'foundations#foundation_page'
   get '/foundation/size', to: 'foundations#foundation_size'
 
-
+  get '/foundation/benefiteds/page/:foundation_id/:page', to: 'benefiteds#benefitedsfoundation_page'
+  get '/foundation/benefited/size/:foundation_id', to: 'benefiteds#benefitedsfoundation_size'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
