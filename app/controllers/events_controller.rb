@@ -22,7 +22,6 @@ class EventsController < ApplicationController
         render json: @event, status: :created, location: @event
       else
         render json: @event.errors, status: :unauthorized
-        
       end
     else
       render json: {"error": "unauthorized"}, status: :unprocessable_entity

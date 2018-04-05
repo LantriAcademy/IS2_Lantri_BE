@@ -53,5 +53,5 @@ class Contributor < ApplicationRecord
     #validates :phone, numericality: true
     validates :email, email: true
     validates :user, length: {maximum: 30 }
-    
+    s
 end
