@@ -150,6 +150,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   byebug
   devise
   faker (~> 1.7)
