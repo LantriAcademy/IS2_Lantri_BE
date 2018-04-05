@@ -17,9 +17,9 @@ class FoundationsController < ApplicationController
   def create
     @foundation = Foundation.new(foundation_params)
     if @foundation.save
-      director = Director.find(params[:director_id]).first
+      director = Director.find(@foundation.id)
       director.foundation_id = @foundation.id
-      director.update
+      director.save
       render json: @foundation, status: :created, location: @foundation
     else
       render json: @foundation.errors, status: :unprocessable_entity
