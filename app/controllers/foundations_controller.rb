@@ -38,6 +38,16 @@ class FoundationsController < ApplicationController
     @foundation.destroy
   end
 
+  def foundation_page
+      @foundations  = Foundation.GetFundationPage(params[:page])
+      render json: @foundations
+  end
+  
+  def foundation_size
+    @size = Foundation.ActualSize()
+    render json: @size
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_foundation
