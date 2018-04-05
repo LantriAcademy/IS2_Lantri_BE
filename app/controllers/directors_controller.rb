@@ -20,6 +20,7 @@ class DirectorsController < ApplicationController
     @director = Director.new(director_params)
 
     if @director.save
+      DirectorMailer.welcome_email(@director).deliver_later
       render json: @director, status: :created, location: @director
     else
       render json: @director.errors, status: :unprocessable_entity
