@@ -25,13 +25,16 @@ class EmailValidator < ActiveModel::EachValidator
       end
     end
 end
+
+
 class Contributor < ApplicationRecord
+    acts_as_token_authenticatable
     
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
-
+  
     has_many :contributor_events
     has_many :events ,through: :contributor_events
     
@@ -41,7 +44,6 @@ class Contributor < ApplicationRecord
     has_many :interests ,through: :interest_contributors
     
     has_many :pictures , as: :imageable
-
     
     validates_associated :helps
     

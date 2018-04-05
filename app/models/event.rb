@@ -23,8 +23,8 @@ class Event < ApplicationRecord
     has_many :contributor_events
     has_many :contributors ,through: :contributor_events
     
-    validates_associated :foundation
-    validates_associated :evidences
+    #validates_associated :foundation
+    #validates_associated :evidences
 
     validates :name, :startDate, :direction, :description, presence: true
     validates :name, length: { maximum: 45 }
