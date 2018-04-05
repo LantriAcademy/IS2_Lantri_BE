@@ -24,3 +24,4 @@ production:
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  url: postgres://123:456@789.compute-1.amazonaws.com:123/456
