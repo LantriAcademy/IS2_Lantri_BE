@@ -24,3 +24,4 @@ Durante el siguiente Sprint el equipo de desarrollo se enfocara en las siguiente
 
 - Implementar mas a profunidad la gema will_paginate
 - Refinar tokens de autenticacion
+- Configurar mas endpoints a disponibilidad del front-end
