@@ -1,25 +1,28 @@
 class ContributorsController < ApplicationController
-  #acts_as_token_authentication_handler_for Contributor
+  acts_as_token_authentication_handler_for Contributor, only: [:show]
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
   def index
     @contributors = Contributor.all
-
     render json: @contributors
   end
 
   # GET /contributors/1
   def show
-    render json: @contributor
+      if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor.id
+        render json: @contributor
+      else
+        render json: @contributor.errors, status: :unauthorized
+      end
   end
-
   
     # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)
 
     if @contributor.save
+      ContributorMailer.welcome_email(@contributor).deliver_later
       render json: @contributor, status: :created, location: @contributor
     else
       render json: @contributor.errors, status: :unprocessable_entity

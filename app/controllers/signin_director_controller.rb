@@ -5,7 +5,7 @@ class SigninDirectorController < ApplicationController
        director = Director.where(email: params[:email]).first
        
         if director && director.valid_password?(params[:password])
-           render json: director.as_json(only: [:email, :authentication_token]), status: :created
+           render json: {"id": director.id,"email": director.email, "authentication_token": director.authentication_token, "foundation_id": director.foundation_id }, status: :created
         else
             head(:unauthorized)
         end

@@ -5,7 +5,7 @@ class SigninContributorController < ApplicationController
        contri = Contributor.where(email: params[:email]).first
        
         if contri && contri.valid_password?(params[:password])
-           render json: contri.as_json(only: [:email, :authentication_token]), status: :created
+           render json: {"email": contri.email, "authentication_token": contri.authentication_token}, status: :created
         else
             head(:unauthorized)
         end

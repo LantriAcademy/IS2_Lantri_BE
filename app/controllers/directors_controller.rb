@@ -1,18 +1,21 @@
 class DirectorsController < ApplicationController
-    #acts_as_token_authentication_handler_for Director
+  acts_as_token_authentication_handler_for Director, only: [:show]
 
   before_action :set_director, only: [:show, :update, :destroy]
 
   # GET /directors
   def index
     @directors = Director.all
-
     render json: @directors
   end
 
   # GET /directors/1
   def show
-    render json: @director
+      if Director.where(authentication_token: params[:director_token]).first.id == @director.id
+        render json: @director
+      else
+        render json: @director.errors, status: :unauthorized
+      end
   end
 
   # POST /directors
@@ -20,6 +23,7 @@ class DirectorsController < ApplicationController
     @director = Director.new(director_params)
 
     if @director.save
+      DirectorMailer.welcome_email(@director).deliver_later
       render json: @director, status: :created, location: @director
     else
       render json: @director.errors, status: :unprocessable_entity
