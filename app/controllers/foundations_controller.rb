@@ -17,7 +17,7 @@ class FoundationsController < ApplicationController
   def create
     @foundation = Foundation.new(foundation_params)
     if @foundation.save
-      director = Director.find(@foundation.id)
+      director = Director.find(@foundation.director_id)
       director.foundation_id = @foundation.id
       director.save
       render json: @foundation, status: :created, location: @foundation
