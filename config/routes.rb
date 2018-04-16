@@ -36,7 +36,10 @@ Rails.application.routes.draw do
   get '/foundation/benefiteds/page/:foundation_id/:page', to: 'benefiteds#benefitedsfoundation_page'
   get '/foundation/benefited/size/:foundation_id', to: 'benefiteds#benefitedsfoundation_size'
   #get '/foundations/benefiteds/:id' to: 'foundations#foundation_benefiteds'
-
+  
+  
+  get '/events_pdf', to: 'events_pdf#show'
+  
   resources :directors
   resources :events
   resources :contributors
