@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405020818) do
+ActiveRecord::Schema.define(version: 20180417204206) do
 
   create_table "benefiteds", force: :cascade do |t|
     t.integer "age"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.integer "foundation_id"
     t.integer "help_id"
     t.integer "picture_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["foundation_id"], name: "index_benefiteds_on_foundation_id"
     t.index ["help_id"], name: "index_benefiteds_on_help_id"
     t.index ["picture_id"], name: "index_benefiteds_on_picture_id"
@@ -57,6 +61,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "authentication_token", limit: 30
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["authentication_token"], name: "index_contributors_on_authentication_token", unique: true
     t.index ["email"], name: "index_contributors_on_email", unique: true
     t.index ["help_id"], name: "index_contributors_on_help_id"
@@ -93,6 +101,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "authentication_token", limit: 30
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["authentication_token"], name: "index_directors_on_authentication_token", unique: true
     t.index ["email"], name: "index_directors_on_email", unique: true
     t.index ["foundation_id"], name: "index_directors_on_foundation_id"
@@ -121,6 +133,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.datetime "updated_at", null: false
     t.integer "event_id"
     t.integer "picture_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["event_id"], name: "index_evidences_on_event_id"
     t.index ["picture_id"], name: "index_evidences_on_picture_id"
   end
@@ -137,6 +153,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.integer "benefited_id"
     t.integer "interest_id"
     t.integer "picture_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["benefited_id"], name: "index_foundations_on_benefited_id"
     t.index ["director_id"], name: "index_foundations_on_director_id"
     t.index ["event_id"], name: "index_foundations_on_event_id"
@@ -214,6 +234,10 @@ ActiveRecord::Schema.define(version: 20180405020818) do
     t.datetime "updated_at", null: false
     t.integer "help_id"
     t.integer "picture_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["help_id"], name: "index_supports_on_help_id"
     t.index ["picture_id"], name: "index_supports_on_picture_id"
   end
