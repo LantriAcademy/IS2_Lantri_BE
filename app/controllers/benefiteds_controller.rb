@@ -56,6 +56,6 @@ class BenefitedsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def benefited_params
-      params.require(:benefited).permit(:age, :preferences)
+      params.require(:benefited).permit(:age, :preferences, :avatar)
     end
 end
