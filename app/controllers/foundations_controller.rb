@@ -16,8 +16,10 @@ class FoundationsController < ApplicationController
   # POST /foundations
   def create
     @foundation = Foundation.new(foundation_params)
-
     if @foundation.save
+      director = Director.find(@foundation.id)
+      director.foundation_id = @foundation.id
+      director.save
       render json: @foundation, status: :created, location: @foundation
     else
       render json: @foundation.errors, status: :unprocessable_entity
@@ -61,6 +63,6 @@ class FoundationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foundation_params
-      params.require(:foundation).permit(:name, :direction, :latitude, :longitude)
+      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id)
     end
 end
