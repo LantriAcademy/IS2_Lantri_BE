@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if Director.where(authentication_token: params[:director_token]).first.foundation_id == @event.foundation_id
       if @event.save
+        EventMailer.event_create_email(Director.where(authentication_token: params[:director_token]).first,@event).deliver_later
         render json: @event, status: :created, location: @event
       else
         render json: @event.errors, status: :unauthorized

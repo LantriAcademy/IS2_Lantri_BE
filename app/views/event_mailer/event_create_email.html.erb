@@ -6,8 +6,12 @@
   <body>
     <h1 style = "font-family:'Dosis',sans-serif">Welcome to fUNdaciones, <%= @director.name %></h1>
     <p style = "font-family:'Dosis',sans-serif">
-      You have successfully signed up to fUNdaciones.com,
+      You have successfully created a new event in fUNdaciones,
       your username is: <%= @director.user %>.<br>
+      The details of your event are:<br>
+      Name : <%= @event.name %>
+      Direction : <%= @event.direction %>
+      Start Date : <%= @event.startDate %>
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>
