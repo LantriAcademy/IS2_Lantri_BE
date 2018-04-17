@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   
   
   get '/events_pdf', to: 'events_pdf#show'
+  get '/events_pdf/:id', to: 'events_pdf#showById'
   
   resources :directors
   resources :events
