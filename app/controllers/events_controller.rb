@@ -21,10 +21,10 @@ class EventsController < ApplicationController
       if @event.save
         render json: @event, status: :created, location: @event
       else
-        render json: @event.errors, status: :unauthorized
+        render json: @event.errors, status: :unprocessable_entity
       end
     else
-      render json: {"error": "unauthorized"}, status: :unprocessable_entity
+      render json: {"error": "unauthorized"}, status: :unauthorized
     end
 
   end
@@ -41,6 +41,11 @@ class EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     @event.destroy
+  end
+
+  def eventsfoundation
+      @events  = Event.where(foundation_id: params[:foundation_id])
+      render json: @events
   end
 
   private

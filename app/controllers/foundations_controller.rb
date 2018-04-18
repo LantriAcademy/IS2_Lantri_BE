@@ -1,4 +1,6 @@
 class FoundationsController < ApplicationController
+  acts_as_token_authentication_handler_for Director, only: [:create]
+
   before_action :set_foundation, only: [:show, :update, :destroy]
 
   # GET /foundations
@@ -17,7 +19,7 @@ class FoundationsController < ApplicationController
   def create
     @foundation = Foundation.new(foundation_params)
     if @foundation.save
-      director = Director.find(@foundation.id)
+      director = Director.find(@foundation.director_id)
       director.foundation_id = @foundation.id
       director.save
       render json: @foundation, status: :created, location: @foundation
