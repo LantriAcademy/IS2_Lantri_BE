@@ -17,6 +17,7 @@ class EventsPdfController < ApplicationController
         pdf = EventPdf.new
         pdf.grid([1.3,0], [3,6]).bounding_box do 
             pdf.text "<b>Título:</b> " + e.name, :inline_format => :true
+            pdf.text "<b>Fecha:</b> " + e.startDate.to_formatted_s(:short), :inline_format => :true
             pdf.text "<b>Dirección:</b> " + e.direction, :inline_format => :true
             pdf.text "<b>Descripción:</b> " + e.description, :inline_format => :true
         end
