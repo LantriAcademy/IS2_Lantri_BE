@@ -41,13 +41,12 @@ Rails.application.routes.draw do
   
   get '/events_pdf', to: 'events_pdf#show'
   get '/events_pdf/:id', to: 'events_pdf#showById'
-   
+  
   post '/contributor_events', to: 'contributor_events#create' 
   
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'
   post '/signin_director/google', to: 'signin_director#googlesign'
-  
-  
+
   resources :directors
   resources :events
   resources :contributors
