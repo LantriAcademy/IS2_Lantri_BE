@@ -5,19 +5,19 @@ class EventPdf < Prawn::Document
     def initialize
         super
         define_grid(:columns => 12, :rows => 10, :gutter => 10)
-        grid([0, 0], [0, 11]).show
-        grid([1, 0], [1, 6]).show
-        grid([1, 7], [3, 11]).show
-        grid([2, 0], [3, 6]).show
-        grid([4, 0], [4, 11]).show
-        grid([5, 0], [9, 11]).show
-        start_new_page
-        define_grid(:columns => 12, :rows => 10, :gutter => 10)
-        grid.show_all
+        font "Helvetica"
+        grid([0, 0], [0, 6]).bounding_box do
+            text "f<b>UN</b>daciones", :size => 36, :inline_format => true, :color => '2C7925'
+        end
+        grid([0,8], [0, 11]).bounding_box do 
+            text "Te agradecemos por", :align => :center
+            text "construir <b>país</b> con nosotros", :align => :center, :inline_format => true
+        end
+        stroke_horizontal_rule 
     end
     
     def myimage(event)
-        image open("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:Event|"+event.longitude.to_s+"," + event.latitude.to_s + "&key=AIzaSyBSK3uZLHPEGHd68JImFbmjcxhvd8KbFyw")
+        image open("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:Event|"+event.longitude.to_s+"," + event.latitude.to_s + "&key=AIzaSyBSK3uZLHPEGHd68JImFbmjcxhvd8KbFyw"), :width => 550
     end
     
     
