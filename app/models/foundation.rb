@@ -17,6 +17,9 @@
 #
 
 class Foundation < ApplicationRecord
+    before_validation :parse_image
+    attr_accessor :image_base
+    
     has_one :director
     has_many :events
     has_many :benefiteds
@@ -43,6 +46,13 @@ class Foundation < ApplicationRecord
     
     def self.ActualSize()
         return Foundation.count()
+    end
+    
+    private 
+    def parse_image 
+        image = Paperclip.io_adapters.for(image_base) 
+        image.original_filename = "file.jpg" 
+        self.picture = image 
     end
 
     #def sel.GetBenefiteds(id)
