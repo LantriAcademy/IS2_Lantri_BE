@@ -52,7 +52,7 @@ class Foundation < ApplicationRecord
     def parse_image 
         image = Paperclip.io_adapters.for(image_base) 
         image.original_filename = "file.jpg" 
-        self.picture = image 
+        self.avatar = image 
     end
 
     #def sel.GetBenefiteds(id)
