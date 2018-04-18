@@ -26,6 +26,7 @@ gem 'faker', '~> 1.7'
 gem 'bcrypt', '~> 3.1.7'
 gem "paperclip", "~> 6.0.0"
 gem 'carrierwave'
+gem 'carrierwave-base64'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
