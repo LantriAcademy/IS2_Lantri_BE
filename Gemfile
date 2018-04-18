@@ -25,6 +25,7 @@ gem 'faker', '~> 1.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "paperclip", "~> 6.0.0"
+gem 'carrierwave'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
