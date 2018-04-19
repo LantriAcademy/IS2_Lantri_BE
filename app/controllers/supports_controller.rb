@@ -46,6 +46,6 @@ class SupportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def support_params
-      params.require(:support).permit(:description, :date)
+      params.require(:support).permit(:description, :date, :avatar)
     end
 end

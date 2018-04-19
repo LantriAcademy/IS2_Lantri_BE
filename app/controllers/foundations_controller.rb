@@ -65,6 +65,6 @@ class FoundationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foundation_params
-      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id)
+      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar)
     end
 end

@@ -17,6 +17,9 @@
 #
 
 class Foundation < ApplicationRecord
+    #before_validation :parse_image
+    #attr_accessor :image_base
+    
     has_one :director
     has_many :events
     has_many :benefiteds
@@ -25,9 +28,14 @@ class Foundation < ApplicationRecord
     has_many :interests,through: :interest_foundations
     
     has_many :pictures, as: :imageable
+    
+    mount_base64_uploader :avatar, AvatarUploader
 
     validates_associated :interests
     validates_associated :pictures
+    
+    #has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+    #validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
     validates :name, :direction, :latitude, :longitude,  presence: true
     validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
@@ -41,6 +49,13 @@ class Foundation < ApplicationRecord
     def self.ActualSize()
         return Foundation.count()
     end
+    
+    #private 
+    #def parse_image 
+    #    image = Paperclip.io_adapters.for(image_base) 
+    #    image.original_filename = "file.jpg" 
+    #    self.avatar = image 
+    #end
 
     #def sel.GetBenefiteds(id)
      #   return Foundation.find(id).joins(:benefiteds)
