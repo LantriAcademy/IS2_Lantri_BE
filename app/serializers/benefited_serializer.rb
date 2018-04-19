@@ -1,3 +1,3 @@
 class BenefitedSerializer < ActiveModel::Serializer
-  attributes :id,:age,:preferences,:foundation_id,:avatar
+  attributes :id,:name,:age,:preferences,:foundation_id,:avatar
 end
