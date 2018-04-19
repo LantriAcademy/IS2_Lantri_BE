@@ -21,7 +21,7 @@ class Director < ApplicationRecord
     mount_base64_uploader :avatar, AvatarUploader
 
     validates :user, :name, :lastname , :email, :phone, presence: true
-    validates :name, :user, :lastname, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
+    validates :name, :user, :lastname, format: { with: /\A[a-zA-Z\s]+\z/,message: "only allows letters" }
     #validates :phone, numericality: true
     validates :email, email: true
     validates :bio, length: {maximum: 500 }, allow_nil: true

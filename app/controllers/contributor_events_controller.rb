@@ -1,4 +1,6 @@
 class ContributorEventsController < ApplicationController
+  acts_as_token_authentication_handler_for Contributor, only: [:create]
+  
   before_action :set_contributor_event, only: [:show, :update, :destroy]
 
   # GET /contributor_events
@@ -16,12 +18,17 @@ class ContributorEventsController < ApplicationController
   # POST /contributor_events
   def create
     @contributor_event = ContributorEvent.new(contributor_event_params)
-
-    if @contributor_event.save
-      render json: @contributor_event, status: :created, location: @contributor_event
+    puts params[:contributor_id]
+    if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor_event.contributor_id
+      if @contributor_event.save
+        render json: {"success": "Ok"}, status: :created
+      else
+        render json: @contributor_event.errors, status: :unprocessable_entity
+      end
     else
-      render json: @contributor_event.errors, status: :unprocessable_entity
+      render json: {"error": "unauthorized"}, status: :unauthorized
     end
+
   end
 
   # PATCH/PUT /contributor_events/1
@@ -46,6 +53,6 @@ class ContributorEventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contributor_event_params
-      params.fetch(:contributor_event, {})
+      params.require(:contributor_event).permit(:contributor_id,:event_id)
     end
 end
