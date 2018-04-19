@@ -16,6 +16,8 @@ class Evidence < ApplicationRecord
     
     validates_associated :pictures
     
+    mount_base64_uploader :avatar, AvatarUploader
+    
     validates :description, presence: true
     validates :description, length: { maximum: 500 }
 

@@ -16,6 +16,8 @@ class Benefited < ApplicationRecord
     belongs_to :foundation
     has_many :helps
     has_many :pictures, as: :imageable
+    
+    mount_base64_uploader :avatar, AvatarUploader
 
     validates_associated :foundation
     validates_associated :helps
