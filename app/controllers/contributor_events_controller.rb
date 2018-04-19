@@ -17,8 +17,9 @@ class ContributorEventsController < ApplicationController
 
   # POST /contributor_events
   def create
-    if ContributorEvent.where(contributor_id: params[:contributor_id],event_id: params[:event_id]) == nil 
-      @contributor_event = ContributorEvent.new(contributor_event_params)
+    @contributor_event = ContributorEvent.new(contributor_event_params)
+    if ContributorEvent.where(contributor_id: @contributor_event.contributor_id,event_id: @contributor_event.event_id).first == nil 
+      
       if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor_event.contributor_id
         if @contributor_event.save
           render json: {"success": "Ok"}, status: :created
@@ -29,7 +30,7 @@ class ContributorEventsController < ApplicationController
         render json: {"error": "unauthorized"}, status: :unauthorized
       end
     else
-      render json: {"Error": "You are already subscribed to the event"}, status: :unauthorized
+      render json: {"Error": "You are already subscribed to the event"}, status: :ok
     end
     
   end
