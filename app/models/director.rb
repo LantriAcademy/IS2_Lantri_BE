@@ -18,8 +18,7 @@ class Director < ApplicationRecord
     validates_associated :pictures
     validates_associated :foundation
     
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+    mount_base64_uploader :avatar, AvatarUploader
 
     validates :user, :name, :lastname , :email, :phone, presence: true
     validates :name, :user, :lastname, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }

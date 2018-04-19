@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418045811) do
+ActiveRecord::Schema.define(version: 20180419001459) do
 
   create_table "benefiteds", force: :cascade do |t|
     t.integer "age"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180418045811) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "avatar"
     t.index ["foundation_id"], name: "index_benefiteds_on_foundation_id"
     t.index ["help_id"], name: "index_benefiteds_on_help_id"
     t.index ["picture_id"], name: "index_benefiteds_on_picture_id"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180418045811) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "avatar"
     t.index ["authentication_token"], name: "index_contributors_on_authentication_token", unique: true
     t.index ["email"], name: "index_contributors_on_email", unique: true
     t.index ["help_id"], name: "index_contributors_on_help_id"
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(version: 20180418045811) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "avatar"
     t.index ["authentication_token"], name: "index_directors_on_authentication_token", unique: true
     t.index ["email"], name: "index_directors_on_email", unique: true
     t.index ["foundation_id"], name: "index_directors_on_foundation_id"
@@ -137,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180418045811) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "avatar"
     t.index ["event_id"], name: "index_evidences_on_event_id"
     t.index ["picture_id"], name: "index_evidences_on_picture_id"
   end
@@ -239,6 +243,7 @@ ActiveRecord::Schema.define(version: 20180418045811) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "avatar"
     t.index ["help_id"], name: "index_supports_on_help_id"
     t.index ["picture_id"], name: "index_supports_on_picture_id"
   end
