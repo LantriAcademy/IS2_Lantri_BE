@@ -24,7 +24,6 @@ class EventsPdfController < ApplicationController
         pdf.grid([1.3,7], [3,11]).bounding_box do 
             if e.foundation.avatar.current_path == nil 
                 pdf.image "public/images/fallback/default.png" , :width => 220 , :height => 180
-                
             else
                 pdf.image e.foundation.avatar.current_path , :width => 220 , :height => 180
             end
