@@ -17,6 +17,8 @@ class Support < ApplicationRecord
     
     validates_associated :pictures
     
+    mount_base64_uploader :avatar, AvatarUploader
+    
     validates :date, :description, presence: true
     validates :description, length: { maximum: 450 }
     validates :date, inclusion: { in: Date.civil(1980, 1, 1)..Date.today}

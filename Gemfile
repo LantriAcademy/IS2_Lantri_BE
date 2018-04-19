@@ -16,6 +16,8 @@ gem 'puma', '~> 3.7'
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'prawn'
+gem 'google-id-token'
 
 gem 'faker', '~> 1.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,6 +27,8 @@ gem 'faker', '~> 1.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "paperclip", "~> 6.0.0"
+gem 'carrierwave'
+gem 'carrierwave-base64'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

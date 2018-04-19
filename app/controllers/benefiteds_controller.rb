@@ -1,4 +1,5 @@
 class BenefitedsController < ApplicationController
+  acts_as_token_authentication_handler_for Director, only: [:create]
   before_action :set_benefited, only: [:show, :update, :destroy]
 
   # GET /benefiteds
@@ -16,12 +17,18 @@ class BenefitedsController < ApplicationController
   # POST /benefiteds
   def create
     @benefited = Benefited.new(benefited_params)
-
-    if @benefited.save
-      render json: @benefited, status: :created, location: @benefited
+    foundation = Foundation.find(@benefited.foundation_id)
+    director = Director.find(foundation.director_id)
+    if director.authentication_token == params[:director_token]
+      if @benefited.save 
+        render json: @benefited, status: :created, location: @benefited
+      else
+        render json: @benefited.errors, status: :unprocessable_entity
+      end
     else
-      render json: @benefited.errors, status: :unprocessable_entity
+      render json: {"error": "unauthorized"}, status: :unauthorized
     end
+   
   end
 
   # PATCH/PUT /benefiteds/1
@@ -56,6 +63,6 @@ class BenefitedsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def benefited_params
-      params.require(:benefited).permit(:age, :preferences)
+      params.require(:benefited).permit(:name,:age, :preferences,:foundation_id, :avatar)
     end
 end

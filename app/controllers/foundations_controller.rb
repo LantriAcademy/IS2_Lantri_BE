@@ -1,4 +1,6 @@
 class FoundationsController < ApplicationController
+  acts_as_token_authentication_handler_for Director, only: [:create]
+
   before_action :set_foundation, only: [:show, :update, :destroy]
 
   # GET /foundations
@@ -63,6 +65,6 @@ class FoundationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foundation_params
-      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id)
+      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar)
     end
 end

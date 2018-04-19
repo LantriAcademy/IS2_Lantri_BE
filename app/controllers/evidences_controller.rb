@@ -46,6 +46,6 @@ class EvidencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def evidence_params
-      params.require(:evidence).permit(:description)
+      params.require(:evidence).permit(:description, :avatar)
     end
 end
