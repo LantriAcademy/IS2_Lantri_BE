@@ -22,7 +22,7 @@ class ContributorEventsController < ApplicationController
       
       if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor_event.contributor_id
         if @contributor_event.save
-          ContributorMailer.subscribe_email(@contributor_event.contributor_id,@contributor_event.event_id).deliver_later
+          ContributorEventMailer.subscribe_email(@contributor_event.contributor_id,@contributor_event.event_id).deliver_later
           render json: {"success": "Ok"}, status: :created
         else
           render json: @contributor_event.errors, status: :unprocessable_entity
