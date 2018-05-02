@@ -22,7 +22,14 @@ class FoundationsController < ApplicationController
       director = Director.find(@foundation.director_id)
       director.foundation_id = @foundation.id
       director.save
-      render json: @foundation, status: :created, location: @foundation
+      params[:interest].each do |word|
+        @interest = Interest.find_by_name(word)
+        if(@interest == nil)
+          @interest = Interest.create(:name => word)
+        end
+        InterestFoundation.create({:interest_id => @interest.id, :foundation_id  => @foundation.id})
+      end
+      render json: @foundation, status: :created
     else
       render json: @foundation.errors, status: :unprocessable_entity
     end
