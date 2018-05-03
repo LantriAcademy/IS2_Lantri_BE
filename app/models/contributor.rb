@@ -71,7 +71,7 @@ class Contributor < ApplicationRecord
           arr << {"x": month[i], "y": e.where( startDate: Date.civil(year,i + 1)..Date.civil(year,i + 2)).count}
         end
         arr << {"x": month[11], "y": e.where( startDate: Date.civil(year,12)..Date.civil(year + 1 , 1)).count}
-      return {"id": year, "data": arr}
+      return [{"id": year.to_s, "data": arr}]
     end
     
 end

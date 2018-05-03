@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:create]
+  acts_as_token_authentication_handler_for Director, only: [:create, :update]
   acts_as_token_authentication_handler_for Contributor, only: [:eventscontributor]
   
   before_action :set_event, only: [:show, :update, :destroy]

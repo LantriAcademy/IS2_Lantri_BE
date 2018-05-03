@@ -1,5 +1,5 @@
 class DirectorsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:show]
+  acts_as_token_authentication_handler_for Director, only: [:show,:update]
 
   before_action :set_director, only: [:show, :update, :destroy]
 
