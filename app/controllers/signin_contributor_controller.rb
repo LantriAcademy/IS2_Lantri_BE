@@ -12,7 +12,7 @@ class SigninContributorController < ApplicationController
     def googlesign
         validator = GoogleIDToken::Validator.new
         begin
-            aud = "799165598681-go1co2ea66fl9ddlgqtlidsvkl9fjes1.apps.googleusercontent.com"
+            aud = "799165598681-9udj7mf8gcg68r84lu0q3eev7vv643i8.apps.googleusercontent.com"
             data = validator.check(params[:tokenId],aud)
             contributor = Contributor.where(email: data['email']).first
             

@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.float "latitude"
     t.float "longitude"
     t.string "description"
+    t.boolean "finish"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "foundation_id"

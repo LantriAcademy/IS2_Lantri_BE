@@ -24,7 +24,7 @@ class Benefited < ApplicationRecord
     validates_associated :pictures
 
     validates :age,:name, presence: true
-    validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
+    validates :name, format: { with: /\A[a-zA-Z\s]+\z/,message: "only allows letters" }
 
 
     def self.GetBeneficiedFoundationPage(page,found_id)

@@ -18,21 +18,24 @@ class ContributorEventsController < ApplicationController
   # POST /contributor_events
   def create
     @contributor_event = ContributorEvent.new(contributor_event_params)
-    if ContributorEvent.where(contributor_id: @contributor_event.contributor_id,event_id: @contributor_event.event_id).first == nil 
-      
-      if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor_event.contributor_id
-        if @contributor_event.save
-          render json: {"success": "Ok"}, status: :created
+    if !Event.find(@contributor_event.event_id).finish 
+      if ContributorEvent.where(contributor_id: @contributor_event.contributor_id,event_id: @contributor_event.event_id).first == nil 
+        if Contributor.where(authentication_token: params[:contributor_token]).first.id == @contributor_event.contributor_id
+          if @contributor_event.save
+            ContributorEventMailer.subscribe_email(@contributor_event.contributor_id,@contributor_event.event_id).deliver_later
+            render json: {"success": "Ok"}, status: :created
+          else
+            render json: @contributor_event.errors, status: :unprocessable_entity
+          end
         else
-          render json: @contributor_event.errors, status: :unprocessable_entity
+          render json: {"error": "unauthorized"}, status: :unauthorized
         end
       else
-        render json: {"error": "unauthorized"}, status: :unauthorized
+        render json: {"Error": "You are already subscribed to the event"}, status: :ok
       end
     else
-      render json: {"Error": "You are already subscribed to the event"}, status: :ok
+      render json: {"Error": "This event has ended"}, status: :ok
     end
-    
   end
 
   # PATCH/PUT /contributor_events/1

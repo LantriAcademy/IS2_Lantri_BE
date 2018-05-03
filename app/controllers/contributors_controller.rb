@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-  acts_as_token_authentication_handler_for Contributor, only: [:show]
+  acts_as_token_authentication_handler_for Contributor, only: [:show,:update]
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
@@ -15,6 +15,16 @@ class ContributorsController < ApplicationController
       else
         render json: @contributor.errors, status: :unauthorized
       end
+  end
+  
+  def years_event
+    arr = Contributor.GetYearsEvent(params[:id])
+    render json: arr
+  end
+  
+  def years_event_data
+    arr = Contributor.GetYearsEventData(params[:year],params[:id])
+    render json: arr
   end
   
     # POST /contributors
