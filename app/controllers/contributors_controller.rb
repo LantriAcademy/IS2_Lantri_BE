@@ -23,6 +23,13 @@ class ContributorsController < ApplicationController
 
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
+      params[:interest].each do |word|
+        @interest = Interest.find_by_name(word)
+        if(@interest == nil)
+          @interest = Interest.create(:name => word)
+        end
+        InterestContributor.create({:interest_id => @interest.id, :contributor_id  => @contributor.id})
+      end
       render json: @contributor, status: :created, location: @contributor
     else
       render json: @contributor.errors, status: :unprocessable_entity
