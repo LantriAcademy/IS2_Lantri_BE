@@ -36,8 +36,13 @@ Rails.application.routes.draw do
   get '/foundation/benefiteds/page/:foundation_id/:page', to: 'benefiteds#benefitedsfoundation_page'
   get '/foundation/benefited/size/:foundation_id', to: 'benefiteds#benefitedsfoundation_size'
   get '/foundation/events/:foundation_id', to: 'events#eventsfoundation'
+  get '/foundation/stats/benefiteds', to: 'foundations#foundation_age_stats'
+  
   #get '/foundations/benefiteds/:id' to: 'foundations#foundation_benefiteds'
   
+  get '/contributor/yearevent', to: 'contributors#years_event' 
+  get '/contributor/yeareventdata', to: 'contributors#years_event_data' 
+  get '/contributor/events/:contributor_id', to: 'events#eventscontributor'
   
   get '/events_pdf', to: 'events_pdf#show'
   get '/events_pdf/:id', to: 'events_pdf#showById'
@@ -46,6 +51,7 @@ Rails.application.routes.draw do
   
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'
   post '/signin_director/google', to: 'signin_director#googlesign'
+
 
   resources :directors
   resources :events
