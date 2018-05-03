@@ -23,9 +23,9 @@ class FoundationsController < ApplicationController
       director.foundation_id = @foundation.id
       director.save
       params[:interest].each do |word|
-        @interest = Interest.find_by_name(word)
+        @interest = Interest.find_by_name(word.downcase)
         if(@interest == nil)
-          @interest = Interest.create(:name => word)
+          @interest = Interest.create(:name => word.downcase)
         end
         InterestFoundation.create({:interest_id => @interest.id, :foundation_id  => @foundation.id})
       end

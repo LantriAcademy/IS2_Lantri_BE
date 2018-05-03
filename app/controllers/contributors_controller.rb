@@ -24,9 +24,9 @@ class ContributorsController < ApplicationController
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
       params[:interest].each do |word|
-        @interest = Interest.find_by_name(word)
+        @interest = Interest.find_by_name(word.downcase)
         if(@interest == nil)
-          @interest = Interest.create(:name => word)
+          @interest = Interest.create(:name => word.downcase)
         end
         InterestContributor.create({:interest_id => @interest.id, :contributor_id  => @contributor.id})
       end
