@@ -31,7 +31,7 @@ class FoundationsController < ApplicationController
   # PATCH/PUT /foundations/1
   def update
     if @foundation.update(foundation_params)
-      render json: @foundation
+      render json: @foundation, status: :ok
     else
       render json: @foundation.errors, status: :unprocessable_entity
     end

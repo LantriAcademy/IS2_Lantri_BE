@@ -42,7 +42,7 @@ class ContributorsController < ApplicationController
   # PATCH/PUT /contributors/1
   def update
     if @contributor.update(contributor_params)
-      render json: @contributor
+      render json: @contributor, status: :ok
     else
       render json: @contributor.errors, status: :unprocessable_entity
     end
