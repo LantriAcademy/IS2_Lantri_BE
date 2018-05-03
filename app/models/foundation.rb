@@ -60,6 +60,23 @@ class Foundation < ApplicationRecord
         return array
     end
     
+    def self.GetYearsEvent(id)
+        c = Foundation.find(id).events.pluck(:startDate).map(&:"year").uniq
+        return c
+    end
+    
+    def self.GetYearsEventData(y,id)
+        year = y.to_i
+        e = Foundation.find(id).events.where(startDate: Date.civil(year)..Date.civil(year + 1) )
+        month = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"]
+        arr = []
+        for i in 0..10
+          arr << {"x": month[i], "y": e.where( startDate: Date.civil(year,i + 1)..Date.civil(year,i + 2)).count}
+        end
+        arr << {"x": month[11], "y": e.where( startDate: Date.civil(year,12)..Date.civil(year + 1 , 1)).count}
+      return [{"id": year.to_s, "data": arr}]
+    end
+    
     #private 
     #def parse_image 
     #    image = Paperclip.io_adapters.for(image_base) 

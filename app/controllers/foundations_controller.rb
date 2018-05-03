@@ -1,5 +1,5 @@
 class FoundationsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:create]
+  acts_as_token_authentication_handler_for Director, only: [:create, :update]
 
   before_action :set_foundation, only: [:show, :update, :destroy]
 
@@ -57,6 +57,15 @@ class FoundationsController < ApplicationController
     render json: @arr
   end
 
+  def years_event
+    arr = Foundation.GetYearsEvent(params[:id])
+    render json: arr
+  end
+  
+  def years_event_data
+    arr = Foundation.GetYearsEventData(params[:year],params[:id])
+    render json: arr
+  end
 
   #def foundation_benefiteds
    # @benefiteds  = Foundation.GetBenefiteds(params[:id])
