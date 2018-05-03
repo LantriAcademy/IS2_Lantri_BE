@@ -17,6 +17,16 @@ class ContributorsController < ApplicationController
       end
   end
   
+  def years_event
+    arr = Contributor.GetYearsEvent(params[:id])
+    render json: arr
+  end
+  
+  def years_event_data
+    arr = Contributor.GetYearsEventData(params[:year],params[:id])
+    render json: arr
+  end
+  
     # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)

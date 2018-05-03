@@ -38,7 +38,7 @@ class Foundation < ApplicationRecord
     #validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
     validates :name, :direction, :latitude, :longitude,  presence: true
-    validates :name, format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
+    validates :name, format: { with: /\A[a-zA-Z\s]+\z/,message: "only allows letters" }
     validates :direction, length: {maximum: 100 }
     validates :latitude, :longitude, numericality: {only_float: true}
     
@@ -48,6 +48,16 @@ class Foundation < ApplicationRecord
     
     def self.ActualSize()
         return Foundation.count()
+    end
+    
+    def self.GetFundationNumberBenefi(min,max,id)
+        array = []
+        f = Foundation.find(id)
+        for i in min..max
+            c = f.benefiteds.where(age: i).count
+            array << {"age": i, "count": c}
+        end
+        return array
     end
     
     #private 
