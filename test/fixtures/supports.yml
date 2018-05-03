@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: supports
+#
+#  id          :integer          not null, primary key
+#  description :string
+#  date        :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  help_id     :integer
+#  picture_id  :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  date: 2018-03-08 20:18:20
+
+two:
+  description: MyString
+  date: 2018-03-08 20:18:20
