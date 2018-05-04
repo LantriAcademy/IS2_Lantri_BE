@@ -127,7 +127,7 @@ Contributor.create([{
     }])
     end
 
-50.times do
+100.times do
     Event.create([{
         name: Faker::Lorem.word  ,
         startDate: Faker::Date.forward(800) ,

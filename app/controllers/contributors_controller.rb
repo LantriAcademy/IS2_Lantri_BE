@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-  acts_as_token_authentication_handler_for Contributor, only: [:show,:update]
+  acts_as_token_authentication_handler_for Contributor, only: [:show]
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
@@ -61,7 +61,7 @@ class ContributorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contributor_params
-      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar)
+      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar,:password_confirmation)
     end
     
 end
