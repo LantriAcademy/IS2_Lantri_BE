@@ -68,7 +68,7 @@ class ContributorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contributor_params
-      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar)
+      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar,:password_confirmation)
     end
     
 end
