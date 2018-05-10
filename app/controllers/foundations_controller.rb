@@ -1,5 +1,5 @@
 class FoundationsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:create]
+  acts_as_token_authentication_handler_for Director, only: [:create, :update]
 
   before_action :set_foundation, only: [:show, :update, :destroy]
 
@@ -38,7 +38,7 @@ class FoundationsController < ApplicationController
   # PATCH/PUT /foundations/1
   def update
     if @foundation.update(foundation_params)
-      render json: @foundation
+      render json: @foundation, status: :ok
     else
       render json: @foundation.errors, status: :unprocessable_entity
     end
@@ -57,6 +57,21 @@ class FoundationsController < ApplicationController
   def foundation_size
     @size = Foundation.ActualSize()
     render json: @size
+  end
+  
+  def foundation_age_stats
+    @arr = Foundation.GetFundationNumberBenefi(params[:min],params[:max],params[:id])
+    render json: @arr
+  end
+
+  def years_event
+    arr = Foundation.GetYearsEvent(params[:id])
+    render json: arr
+  end
+  
+  def years_event_data
+    arr = Foundation.GetYearsEventData(params[:year],params[:id])
+    render json: arr
   end
 
   #def foundation_benefiteds

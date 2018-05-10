@@ -22,7 +22,13 @@ class EventsPdfController < ApplicationController
             pdf.text "<b>Descripción:</b> " + e.description, :inline_format => :true
         end
         pdf.grid([1.3,7], [3,11]).bounding_box do 
-            pdf.image e.foundation.avatar.current_path , :width => 220 , :height => 180
+            if e.foundation.avatar.current_path == nil 
+                pdf.image "public/images/fallback/default.png" , :width => 220 , :height => 180
+            else
+                pdf.image e.foundation.avatar.current_path , :width => 220 , :height => 180
+            end
+            
+            
         end
         pdf.grid([4,0], [4,11]).bounding_box do 
             pdf.text "<b>¿Cómo llegar?</b>", :inline_format => true, :size => 30

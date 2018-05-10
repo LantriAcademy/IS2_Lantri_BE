@@ -109,25 +109,35 @@ Contributor.create([{
     end
 
 
-15.times do
+120.times do
     Benefited.create([{
         name: Faker::Name.first_name ,
-        age: Faker::Number.between(4, 18)  ,
+        age: Faker::Number.between(1, 22)  ,
         preferences: Faker::Lorem.sentence,   
         foundation: Foundation.find(Faker::Number.between(1, 15)) 
     }])
     end
 
-15.times do
+120.times do
+    Benefited.create([{
+        name: Faker::Name.first_name ,
+        age: Faker::Number.between(58, 90)  ,
+        preferences: Faker::Lorem.sentence,   
+        foundation: Foundation.find(Faker::Number.between(1, 15)) 
+    }])
+    end
+
+100.times do
     Event.create([{
         name: Faker::Lorem.word  ,
-        startDate: Faker::Date.forward(230) ,
+        startDate: Faker::Date.forward(800) ,
         direction: Faker::Address.street_address  ,
         latitude: Faker::Address.latitude ,    
         longitude: Faker::Address.longitude ,
         description: Faker::Lorem.sentence   ,
         foundation: Foundation.find(Faker::Number.between(1, 15)),
-        contributors: Contributor.where(id: Faker::Number.between(1, 12)..Faker::Number.between(12, 16))
+        contributors: Contributor.where(id: Faker::Number.between(1, 12)..Faker::Number.between(12, 16)),
+        finish: false
     }])
     end
 

@@ -1,5 +1,5 @@
 class DirectorsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:show]
+  acts_as_token_authentication_handler_for Director, only: [:show,:update]
 
   before_action :set_director, only: [:show, :update, :destroy]
 
@@ -33,7 +33,7 @@ class DirectorsController < ApplicationController
   # PATCH/PUT /directors/1
   def update
     if @director.update(director_params)
-      render json: @director
+      render json: @director, status: :ok
     else
       render json: @director.errors, status: :unprocessable_entity
     end
@@ -52,6 +52,6 @@ class DirectorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def director_params
-      params.require(:director).permit(:bio, :user, :password, :name, :lastname, :email, :phone, :avatar)
+      params.require(:director).permit(:bio, :user, :password, :name, :lastname, :email, :phone, :avatar,:password_confirmation)
     end
 end

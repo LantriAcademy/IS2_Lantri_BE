@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-  acts_as_token_authentication_handler_for Contributor, only: [:show]
+  acts_as_token_authentication_handler_for Contributor, only: [:show,:update]
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors
@@ -15,6 +15,16 @@ class ContributorsController < ApplicationController
       else
         render json: @contributor.errors, status: :unauthorized
       end
+  end
+  
+  def years_event
+    arr = Contributor.GetYearsEvent(params[:id])
+    render json: arr
+  end
+  
+  def years_event_data
+    arr = Contributor.GetYearsEventData(params[:year],params[:id])
+    render json: arr
   end
   
     # POST /contributors
@@ -39,7 +49,7 @@ class ContributorsController < ApplicationController
   # PATCH/PUT /contributors/1
   def update
     if @contributor.update(contributor_params)
-      render json: @contributor
+      render json: @contributor, status: :ok
     else
       render json: @contributor.errors, status: :unprocessable_entity
     end
@@ -58,7 +68,7 @@ class ContributorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contributor_params
-      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar)
+      params.require(:contributor).permit(:description, :user, :password, :name, :lastname, :email, :phone, :avatar,:password_confirmation)
     end
     
 end

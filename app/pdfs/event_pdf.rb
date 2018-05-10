@@ -17,7 +17,7 @@ class EventPdf < Prawn::Document
     end
     
     def myimage(event)
-        image open("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:Event|"+event.longitude.to_s+"," + event.latitude.to_s + "&key=AIzaSyBSK3uZLHPEGHd68JImFbmjcxhvd8KbFyw"), :width => 550
+        image open("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:Event|"+event.latitude.to_s+"," + event.longitude.to_s + "&key=AIzaSyBSK3uZLHPEGHd68JImFbmjcxhvd8KbFyw"), :width => 550
     end
     
     

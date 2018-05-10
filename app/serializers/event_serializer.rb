@@ -1,3 +1,3 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id,:name,:startDate,:direction,:latitude,:longitude,:description,:foundation_id
+  attributes :id,:name,:startDate,:direction,:latitude,:longitude,:description,:foundation_id,:finish
 end
