@@ -37,8 +37,9 @@ class ContributorsController < ApplicationController
       ResetTokenPasswordJob.set(wait: 2.hours).perform_later(@contributor.id,"contributor")
       # mandar email
       ContributorMailer.reset_email(@contributor).deliver_later
+      render json: {"status": "OK"},  status: :ok
     else
-      render json: {"error": "email is invalid"}, status: :not_acceptable
+      render json: {"error": "email is invalid " + params[:email] + " " + @contributor.type_user}, status: :not_acceptable
     end
   end
   
@@ -61,7 +62,7 @@ class ContributorsController < ApplicationController
     # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)
-
+    @contributor.type_user = "normal_user"
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
       params[:interest].each do |word|
