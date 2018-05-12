@@ -48,8 +48,8 @@ Rails.application.routes.draw do
   post '/contributor_events', to: 'contributor_events#create' 
   
   #Benefited
-  get '/benefiteds_pdf', to: 'benefiteds_pdf#show'
-  #get '/benefiteds_pdf/:id/:userId', to 'benefiteds_pdf#showById'
+  get '/benefiteds_pdf/:id', to: 'benefiteds_pdf#show'
+  get '/benefiteds_pdf/:id/:userId', to: 'benefiteds_pdf#showById'
   
   #Sing IN routes 
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'

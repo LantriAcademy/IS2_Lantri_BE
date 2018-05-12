@@ -1,10 +1,9 @@
 class BenefitedsPdfController < ApplicationController
     
     def show
-        b = Benefited.find(1)
-        c = Contributor.find(1)
+        b = Benefited.find(params[:id])
         f = Foundation.find(b.foundation_id)
-        pdf = createPdf(b, c, f)
+        pdf = createPdf(b, nil, f)
         send_data pdf.render 
     end
     def showById 
@@ -21,7 +20,11 @@ class BenefitedsPdfController < ApplicationController
     def createPdf(b, c, f)
         pdf = BenefitedPdf.new
         pdf.grid([1.3,0], [2, 11]).bounding_box do
-            pdf.text "Hola " +  c.name + " "  + c.lastname, :size => 28, :align => :center
+            if c != nil
+                pdf.text c.name + " "  + c.lastname + " agradecemos tu ayuda", :size => 24, :align => :center
+            else
+                pdf.text "Agradecemos tu ayuda", :size => 28, :align => :center
+            end
         end
         pdf.grid([2, 0], [4, 5]).bounding_box do 
             if b.avatar.current_path == nil 
