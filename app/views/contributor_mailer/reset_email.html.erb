@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style = "font-family:'Dosis',sans-serif;color:#56b156;">fUNdaciones</h1>
+    <p>
+      Hola <%= @contributor.name %>, Haz clic <a href=<%= Rails.application.secrets.front_url+"/passwordReset?token="+@contributor.token_reset_pass %> >Aqui</a> para restablecer la contraseña de tu cuenta en fUNdaciones.
+    </p> 
+    <p>El enlace estará activo durante 2 horas. </p>
+    <p>Si no has solicitado restablecer tu contraseña, puedes ignorar este correo electrónico y no se cambiará tu contraseña.</p>
+  </body>
+</html>
