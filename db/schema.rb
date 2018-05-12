@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.string "lastname"
     t.string "email", default: "", null: false
     t.string "phone"
+    t.string "type_user"
+    t.string "token_reset_pass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "help_id"
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.string "lastname"
     t.string "email", default: "", null: false
     t.string "phone"
+    t.string "type_user"
+    t.string "token_reset_pass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "foundation_id"

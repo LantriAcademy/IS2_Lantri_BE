@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   get '/contributor/yearevent', to: 'contributors#years_event' 
   get '/contributor/yeareventdata', to: 'contributors#years_event_data' 
   get '/contributor/events/:contributor_id', to: 'events#eventscontributor'
+  post '/contributor/reset_password', to: 'contributors#reset_password'
+  post '/contributor/change_password', to: 'contributors#change_password'
   
   #Event routes 
   get '/events_pdf', to: 'events_pdf#show'
