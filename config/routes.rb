@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'
   post '/signin_director/google', to: 'signin_director#googlesign'
 
+  #Charts Routes
+  get '/chart_pdf', to: 'chart_pdf#show'
 
   resources :directors
   resources :events

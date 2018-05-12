@@ -16,6 +16,7 @@ gem 'puma', '~> 3.7'
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'prawn-svg'
 gem 'prawn'
 gem 'google-id-token'
 
