@@ -6,5 +6,3 @@
 #     https: false
 #   )
 # end
-
-Rails.application.constante = "dasdasdasdasdas"
