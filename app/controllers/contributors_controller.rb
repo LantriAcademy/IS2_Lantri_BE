@@ -27,10 +27,42 @@ class ContributorsController < ApplicationController
     render json: arr
   end
   
+  def reset_password 
+    @contributor = Contributor.where(email: params[:email]).first
+    if @contributor and @contributor.type_user == "normal_user"
+      # Create Token 
+      @contributor.token_reset_pass = Devise.friendly_token
+      @contributor.save
+      # Job end
+      ResetTokenPasswordJob.set(wait: 2.hours).perform_later(@contributor.id,"contributor")
+      # mandar email
+      ContributorMailer.reset_email(@contributor).deliver_later
+      render json: {"status": "OK"},  status: :ok
+    else
+      render json: {"error": "email is invalid " + params[:email] + " " + @contributor.type_user}, status: :not_acceptable
+    end
+  end
+  
+  def change_password
+    @contributor = Contributor.where(email: params[:email]).first
+    if @contributor and @contributor.token_reset_pass != nil and @contributor.token_reset_pass == params[:reset_token]
+      if @contributor.update(params.require(:contributor).permit(:password,:password_confirmation))
+        @contributor.token_reset_pass = nil
+        @contributor.save
+        render json: {"status": "OK"} ,status: :ok
+      else
+        render json: @contributor.errors, status: :unprocessable_entity
+      end
+    else
+      render json: {"error": "reset token is invalid or expired"}, status: :not_acceptable
+    end
+  end
+  
+  
     # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)
-
+    @contributor.type_user = "normal_user"
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
       params[:interest].each do |word|

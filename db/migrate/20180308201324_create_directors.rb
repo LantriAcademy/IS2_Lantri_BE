@@ -5,9 +5,10 @@ class CreateDirectors < ActiveRecord::Migration[5.1]
       t.string :user
       t.string :name
       t.string :lastname
-      t.string :email,              null: false, default: ""
+      t.string :email,null: false, default: ""
       t.string :phone
-
+      t.string :type_user
+      t.string :token_reset_pass
       t.timestamps
       
     end
