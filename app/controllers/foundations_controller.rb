@@ -22,7 +22,14 @@ class FoundationsController < ApplicationController
       director = Director.find(@foundation.director_id)
       director.foundation_id = @foundation.id
       director.save
-      render json: @foundation, status: :created, location: @foundation
+      params[:interest].each do |word|
+        @interest = Interest.find_by_name(word.downcase)
+        if(@interest == nil)
+          @interest = Interest.create(:name => word.downcase)
+        end
+        InterestFoundation.create({:interest_id => @interest.id, :foundation_id  => @foundation.id})
+      end
+      render json: @foundation, status: :created
     else
       render json: @foundation.errors, status: :unprocessable_entity
     end
@@ -31,7 +38,7 @@ class FoundationsController < ApplicationController
   # PATCH/PUT /foundations/1
   def update
     if @foundation.update(foundation_params)
-      render json: @foundation
+      render json: @foundation, status: :ok
     else
       render json: @foundation.errors, status: :unprocessable_entity
     end
@@ -80,6 +87,6 @@ class FoundationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foundation_params
-      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar)
+      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar, :description, :howToHelp, :contactUs)
     end
 end

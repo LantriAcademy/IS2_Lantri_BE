@@ -137,6 +137,9 @@ ActiveRecord::Schema.define(version: 20180419001459) do
   create_table "foundations", force: :cascade do |t|
     t.string "name"
     t.string "direction"
+    t.string "howToHelp"
+    t.string "contactUs"
+    t.string "description"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false

@@ -37,8 +37,9 @@ class ContributorsController < ApplicationController
       ResetTokenPasswordJob.set(wait: 2.hours).perform_later(@contributor.id,"contributor")
       # mandar email
       ContributorMailer.reset_email(@contributor).deliver_later
+      render json: {"status": "OK"},  status: :ok
     else
-      render json: {"error": "email is invalid"}, status: :not_acceptable
+      render json: {"error": "email is invalid " + params[:email] + " " + @contributor.type_user}, status: :not_acceptable
     end
   end
   
@@ -61,9 +62,16 @@ class ContributorsController < ApplicationController
     # POST /contributors
   def create
     @contributor = Contributor.new(contributor_params)
-
+    @contributor.type_user = "normal_user"
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
+      params[:interest].each do |word|
+        @interest = Interest.find_by_name(word.downcase)
+        if(@interest == nil)
+          @interest = Interest.create(:name => word.downcase)
+        end
+        InterestContributor.create({:interest_id => @interest.id, :contributor_id  => @contributor.id})
+      end
       render json: @contributor, status: :created, location: @contributor
     else
       render json: @contributor.errors, status: :unprocessable_entity
@@ -73,7 +81,7 @@ class ContributorsController < ApplicationController
   # PATCH/PUT /contributors/1
   def update
     if @contributor.update(contributor_params)
-      render json: @contributor
+      render json: @contributor, status: :ok
     else
       render json: @contributor.errors, status: :unprocessable_entity
     end

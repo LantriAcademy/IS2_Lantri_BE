@@ -51,6 +51,9 @@ Interest.create([{
 15.times do
     Foundation.create([{
         name: Faker::Name.first_name ,
+        description: Faker::Lorem.sentence,
+        howToHelp: Faker::Lorem.sentence,
+        contactUs: Faker::Lorem.sentence,
         direction: Faker::Address.street_address  ,
         latitude: Faker::Address.latitude ,    
         longitude: Faker::Address.longitude,

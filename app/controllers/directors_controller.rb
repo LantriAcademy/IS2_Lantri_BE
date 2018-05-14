@@ -33,7 +33,7 @@ class DirectorsController < ApplicationController
   # PATCH/PUT /directors/1
   def update
     if @director.update(director_params)
-      render json: @director
+      render json: @director, status: :ok
     else
       render json: @director.errors, status: :unprocessable_entity
     end

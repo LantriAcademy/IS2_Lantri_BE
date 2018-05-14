@@ -1,3 +1,3 @@
 class InterestSerializer < ActiveModel::Serializer
-  attributes :id,:name,:descripcion
+  attributes :id,:name,:description
 end
