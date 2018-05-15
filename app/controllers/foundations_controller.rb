@@ -6,7 +6,6 @@ class FoundationsController < ApplicationController
   # GET /foundations
   def index
     @foundations = Foundation.all
-
     render json: @foundations
   end
 

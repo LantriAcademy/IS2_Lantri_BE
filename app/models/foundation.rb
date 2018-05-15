@@ -44,7 +44,7 @@ class Foundation < ApplicationRecord
     validates :latitude, :longitude, numericality: {only_float: true}
     
     def self.GetFundationPage(page)
-        return Foundation.limit(6).offset((page.to_i-1)*6)
+        return Foundation.order(created_at: :desc).limit(6).offset((page.to_i-1)*6)
     end
     
     def self.ActualSize()
