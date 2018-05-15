@@ -30,6 +30,7 @@ class Foundation < ApplicationRecord
     has_many :pictures, as: :imageable
     
     mount_base64_uploader :avatar, AvatarUploader
+    mount_base64_uploader :pdf, PdfUploader
 
     validates_associated :interests
     validates_associated :pictures
