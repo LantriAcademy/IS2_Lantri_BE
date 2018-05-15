@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.string "lastname"
     t.string "email", default: "", null: false
     t.string "phone"
+    t.string "type_user"
+    t.string "token_reset_pass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "help_id"
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.string "lastname"
     t.string "email", default: "", null: false
     t.string "phone"
+    t.string "type_user"
+    t.string "token_reset_pass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "foundation_id"
@@ -133,6 +137,9 @@ ActiveRecord::Schema.define(version: 20180419001459) do
   create_table "foundations", force: :cascade do |t|
     t.string "name"
     t.string "direction"
+    t.string "howToHelp"
+    t.string "contactUs"
+    t.string "description"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false

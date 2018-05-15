@@ -39,16 +39,24 @@ Rails.application.routes.draw do
   get '/contributor/yearevent', to: 'contributors#years_event' 
   get '/contributor/yeareventdata', to: 'contributors#years_event_data' 
   get '/contributor/events/:contributor_id', to: 'events#eventscontributor'
+  post '/contributor/reset_password', to: 'contributors#reset_password'
+  post '/contributor/change_password', to: 'contributors#change_password'
   
   #Event routes 
   get '/events_pdf', to: 'events_pdf#show'
   get '/events_pdf/:id', to: 'events_pdf#showById'
   post '/contributor_events', to: 'contributor_events#create' 
   
+  #Benefited
+  get '/benefiteds_pdf/:id', to: 'benefiteds_pdf#show'
+  get '/benefiteds_pdf/:id/:userId', to: 'benefiteds_pdf#showById'
+  
   #Sing IN routes 
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'
   post '/signin_director/google', to: 'signin_director#googlesign'
 
+  #Charts Routes
+  post '/chart_pdf', to: 'chart_pdf#show'
 
   resources :directors
   resources :events
