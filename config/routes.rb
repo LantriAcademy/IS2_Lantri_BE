@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   
   resources :directors do
     collection do
-      post 'reset_password', to: 'contributors#reset_password'
-      post 'change_password', to: 'contributors#change_password'
+      post 'reset_password', to: 'directors#reset_password'
+      post 'change_password', to: 'directors#change_password'
     end
   end
 
