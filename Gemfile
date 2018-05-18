@@ -19,6 +19,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'prawn-svg'
 gem 'prawn'
 gem 'google-id-token'
+gem 'whenever'
 
 gem 'faker', '~> 1.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

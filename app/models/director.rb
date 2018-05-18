@@ -27,5 +27,9 @@ class Director < ApplicationRecord
     validates :bio, length: {maximum: 500 }, allow_nil: true
     validates :user, length: {maximum: 30 }
     
+    def self.GetInfoEvents(director)
+        c = ContributorEvent.joins(:event).where(created_at: 1.week.ago..Time.now).where("foundation_id = " + director.foundation_id).count
+        return c
+    end
 
 end

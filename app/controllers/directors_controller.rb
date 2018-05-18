@@ -43,6 +43,38 @@ class DirectorsController < ApplicationController
   def destroy
     @director.destroy
   end
+  
+  def reset_password 
+    @director = Director.where(email: params[:email]).first
+    if @director and @director.type_user == "normal_user"
+      # Create Token 
+      @director.token_reset_pass = Devise.friendly_token
+      @director.save
+      # Job end
+      ResetTokenPasswordJob.set(wait: 2.hours).perform_later(@director.id,"director")
+      # mandar email
+      DirectorMailer.reset_email(@director).deliver_later
+      render json: {"status": "OK"},  status: :ok
+    else
+      render json: {"error": "email is invalid " + params[:email] + " " + @director.type_user}, status: :not_acceptable
+    end
+  end
+  
+  def change_password
+    @director = Director.where(email: params[:email]).first
+    if @director and @director.token_reset_pass != nil and @director.token_reset_pass == params[:reset_token]
+      if @director.update(params.require(:director).permit(:password,:password_confirmation))
+        @director.token_reset_pass = nil
+        @director.save
+        render json: {"status": "OK"} ,status: :ok
+      else
+        render json: @director.errors, status: :unprocessable_entity
+      end
+    else
+      render json: {"error": "reset token is invalid or expired"}, status: :not_acceptable
+    end
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
