@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419001459) do
+ActiveRecord::Schema.define(version: 20180515193725) do
 
   create_table "benefiteds", force: :cascade do |t|
     t.integer "age"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20180419001459) do
     t.integer "interest_id"
     t.integer "picture_id"
     t.string "avatar"
+    t.string "pdf"
     t.index ["benefited_id"], name: "index_foundations_on_benefited_id"
     t.index ["director_id"], name: "index_foundations_on_director_id"
     t.index ["event_id"], name: "index_foundations_on_event_id"

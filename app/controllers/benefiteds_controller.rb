@@ -1,5 +1,5 @@
 class BenefitedsController < ApplicationController
-  acts_as_token_authentication_handler_for Director, only: [:create]
+  acts_as_token_authentication_handler_for Director, only: [:create,:update]
   before_action :set_benefited, only: [:show, :update, :destroy]
 
   # GET /benefiteds
@@ -33,11 +33,16 @@ class BenefitedsController < ApplicationController
 
   # PATCH/PUT /benefiteds/1
   def update
-    if @benefited.update(benefited_params)
+    if @benefited.foundation_id == Director.where(authentication_token: params[:director_token]).first.foundation_id
+      if @benefited.update(benefited_params)
       render json: @benefited
+      else
+        render json: @benefited.errors, status: :unprocessable_entity
+      end
     else
-      render json: @benefited.errors, status: :unprocessable_entity
+      render json: {"error": "unauthorized"}, status: :unauthorized
     end
+    
   end
 
   # DELETE /benefiteds/1

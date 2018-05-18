@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :directors
-  devise_for :contributors
+
   
   resources :signin_contributor, only: [:create, :destroy]
   resources :signin_director, only: [:create, :destroy]
@@ -15,8 +14,8 @@ Rails.application.routes.draw do
   resources :evidences
   resources :supports
   resources :helps
-  resources :directors
-  
+
+
   #Foundations routes 
   resources :foundations do
     collection do
@@ -38,6 +37,13 @@ Rails.application.routes.draw do
           get ':foundation_id', to: 'events#eventsfoundation'
         end
       end
+    end
+  end
+  
+  resources :directors do
+    collection do
+      post 'reset_password', to: 'contributors#reset_password'
+      post 'change_password', to: 'contributors#change_password'
     end
   end
 
@@ -77,6 +83,9 @@ Rails.application.routes.draw do
 
   #Charts Routes
   post '/chart_pdf', to: 'chart_pdf#show'
+  
+  devise_for :directors
+  devise_for :contributors
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  
