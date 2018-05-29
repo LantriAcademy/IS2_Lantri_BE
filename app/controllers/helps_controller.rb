@@ -1,4 +1,5 @@
 class HelpsController < ApplicationController
+  acts_as_token_authentication_handler_for Contributor, only: [:create]
   before_action :set_help, only: [:show, :update, :destroy]
 
   # GET /helps
@@ -16,11 +17,19 @@ class HelpsController < ApplicationController
   # POST /helps
   def create
     @help = Help.new(help_params)
-
-    if @help.save
-      render json: @help, status: :created, location: @help
+    if Help.where(contributor_id: @help.contributor_id,benefited_id: @help.benefited_id).first == nil 
+      if Contributor.where(authentication_token: params[:contributor_token]).first.id == @help.contributor_id
+        if @help.save
+          #ContributorEventMailer.subscribe_email(@help.contributor_id,@help.event_id).deliver_later
+          render json: {"success": "Ok"}, status: :created
+        else
+          render json: @help.errors, status: :unprocessable_entity
+        end
+      else
+        render json: {"error": "unauthorized"}, status: :unauthorized
+      end
     else
-      render json: @help.errors, status: :unprocessable_entity
+      render json: {"Error": "You are already helped to this benefited"}, status: :ok
     end
   end
 
@@ -46,6 +55,6 @@ class HelpsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def help_params
-      params.require(:help).permit(:description, :startDate)
+      params.require(:help).permit(:description, :startDate,:contributor_id,:benefited_id)
     end
 end

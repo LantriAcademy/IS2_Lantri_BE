@@ -22,6 +22,7 @@ class DirectorsController < ApplicationController
   def create
     @director = Director.new(director_params)
     @director.type_user = "normal_user"
+    @director.disable_count = 0
     if @director.save
       DirectorMailer.welcome_email(@director).deliver_later
       render json: @director, status: :created, location: @director

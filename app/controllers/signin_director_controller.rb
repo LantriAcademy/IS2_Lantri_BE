@@ -1,14 +1,38 @@
 class SigninDirectorController < ApplicationController
-
-   def create
+    acts_as_token_authentication_handler_for Director, only: [:singout]
+    
+    def create
        director = Director.where(email: params[:email]).first
+       logger_sing = ActiveSupport::TaggedLogging.new(Logger.new("login.log"))
         if director && director.valid_password?(params[:password])
-           render json: {"id": director.id,"email": director.email, "authentication_token": director.authentication_token, "foundation_id": director.foundation_id }, status: :created
+            director.disable_count = 0 
+            director.save
+            logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign In Director: " + director.email + " SUCCESS") }
+            render json: {"id": director.id,"email": director.email, "authentication_token": director.authentication_token, "foundation_id": director.foundation_id }, status: :created
         else
+            director.disable_count = director.disable_count + 1
+            director.save
+            logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign In Director: " + director.email + " SUCCESS") }
+            if director.disable_count % 5 == 0
+               #MAILER 
+            end
             head(:unauthorized)
         end
-   end
-   
+    end
+    
+    def singout
+        director = Director.where(email: params[:email]).first
+        if director && director.authentication_token == params[:director_token]
+            logger_sing = ActiveSupport::TaggedLogging.new(Logger.new("login.log"))
+            logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign Out Director: " + director.email) }
+            director.authentication_token = Devise.friendly_token
+            director.save
+            render json: {"Status":"OK"}, status: :ok
+        else
+            render json: {"Error":"Invalid Email"}
+        end
+    end
+    
     def googlesign
         validator = GoogleIDToken::Validator.new
         begin
@@ -17,6 +41,8 @@ class SigninDirectorController < ApplicationController
             director = Director.where(email: data['email']).first
             
             if director
+                logger_sing = ActiveSupport::TaggedLogging.new(Logger.new("login.log"))
+                logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign In Director: " + director.email+ " SUCCESS - Google" ) }
                 render json: {"id": director.id,"email": director.email, "authentication_token": director.authentication_token, "foundation_id": director.foundation_id }, status: :created
             else
                 newdirector = Director.new()
