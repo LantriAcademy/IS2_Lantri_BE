@@ -37,11 +37,11 @@ class Benefited < ApplicationRecord
     end
     
     def self.GetBeneficiedContributorPage(page,contributor_id)
-        return Contributors.find(contributor_id).benefiteds.limit(6).offset((page.to_i-1)*6)
+        return Contributor.find(contributor_id).benefiteds.limit(6).offset((page.to_i-1)*6)
     end
     
     def self.BeneficiedContributorActualSize(contributor_id)
-        return Contributors.find(contributor_id).benefiteds.count
+        return Contributor.find(contributor_id).benefiteds.count
     end
     
     
