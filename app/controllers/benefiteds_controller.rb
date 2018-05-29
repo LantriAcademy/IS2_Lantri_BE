@@ -59,6 +59,16 @@ class BenefitedsController < ApplicationController
     @size = Benefited.BeneficiedFoundationActualSize(params[:foundation_id])
     render json: @size
   end
+  
+  def benefitedscontributor_page
+      @benefiteds  = Benefited.GetBeneficiedContributorPage(params[:page],params[:contributor_id])
+      render json: @benefiteds
+  end
+  
+  def benefitedscontributor_size
+    @size = Benefited.BeneficiedContributorActualSize(params[:contributor_id])
+    render json: @size
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

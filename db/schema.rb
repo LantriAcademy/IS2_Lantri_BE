@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180515193725) do
     t.string "phone"
     t.string "type_user"
     t.string "token_reset_pass"
+    t.integer "disable_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "help_id"
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180515193725) do
     t.string "phone"
     t.string "type_user"
     t.string "token_reset_pass"
+    t.integer "disable_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "foundation_id"

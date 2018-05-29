@@ -15,6 +15,7 @@
 class Benefited < ApplicationRecord
     belongs_to :foundation
     has_many :helps
+    has_many :contributors ,through: :helps
     has_many :pictures, as: :imageable
     
     mount_base64_uploader :avatar, AvatarUploader
@@ -34,5 +35,14 @@ class Benefited < ApplicationRecord
     def self.BeneficiedFoundationActualSize(found_id)
         return Benefited.where(foundation_id: found_id).count()
     end
+    
+    def self.GetBeneficiedContributorPage(page,contributor_id)
+        return Contributor.find(contributor_id).benefiteds.limit(6).offset((page.to_i-1)*6)
+    end
+    
+    def self.BeneficiedContributorActualSize(contributor_id)
+        return Contributor.find(contributor_id).benefiteds.count
+    end
+    
     
 end

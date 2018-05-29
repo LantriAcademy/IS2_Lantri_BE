@@ -62,6 +62,7 @@ Interest.create([{
     end
     
 Director.create([{
+        disable_count: 0,
         type_user: "normal_user",
         bio: Faker::Lorem.sentence ,
         name: "FERNANDO" ,
@@ -77,6 +78,7 @@ Director.create([{
     
 15.times do
     Director.create([{
+        disable_count: 0,
         type_user: "normal_user",
         bio: Faker::Lorem.sentence ,
         name: Faker::Name.first_name ,
@@ -90,6 +92,7 @@ Director.create([{
     end
 
 Contributor.create([{
+        disable_count: 0,
         type_user: "normal_user",
         description: Faker::Cat.breed ,
         name: "LUIS" ,
@@ -103,6 +106,7 @@ Contributor.create([{
 
 15.times do
     Contributor.create([{
+        disable_count: 0,
         type_user: "normal_user",
         description: Faker::Cat.breed ,
         name: Faker::Name.first_name ,

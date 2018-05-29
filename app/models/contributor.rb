@@ -38,7 +38,9 @@ class Contributor < ApplicationRecord
     has_many :contributor_events
     has_many :events ,through: :contributor_events
     
+    
     has_many :helps
+    has_many :benefiteds ,through: :helps
     
     has_many :interest_contributors
     has_many :interests ,through: :interest_contributors
