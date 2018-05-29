@@ -80,6 +80,8 @@ Rails.application.routes.draw do
   #Sing IN routes 
   post '/signin_contributor/google', to: 'signin_contributor#googlesign'
   post '/signin_director/google', to: 'signin_director#googlesign'
+  post '/signin_contributor/signout', to: 'signin_contributor#singout'
+  post '/signin_director/signout', to: 'signin_director#singout'
 
   #Charts Routes
   post '/chart_pdf', to: 'chart_pdf#show'

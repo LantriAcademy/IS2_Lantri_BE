@@ -22,6 +22,7 @@ class DirectorsController < ApplicationController
   def create
     @director = Director.new(director_params)
     @director.type_user = "normal_user"
+    @director.disable_count = 0
     if @director.save
       DirectorMailer.welcome_email(@director).deliver_later
       render json: @director, status: :created, location: @director
@@ -65,6 +66,7 @@ class DirectorsController < ApplicationController
     if @director and @director.token_reset_pass != nil and @director.token_reset_pass == params[:reset_token]
       if @director.update(params.require(:director).permit(:password,:password_confirmation))
         @director.token_reset_pass = nil
+        @director.disable_count = 0
         @director.save
         render json: {"status": "OK"} ,status: :ok
       else

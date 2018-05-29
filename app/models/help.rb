@@ -25,7 +25,6 @@ class Help < ApplicationRecord
     validates_associated :type_of_help
     validates_associated :status_of_help
 
-	validates :description, presence:true
     validates :description, length: { maximum: 500 }
 
     validates :startDate, inclusion: { in: Date.today..Date.civil(2800, 1, 1)}

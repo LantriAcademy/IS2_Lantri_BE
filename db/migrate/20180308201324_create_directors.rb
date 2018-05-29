@@ -9,6 +9,7 @@ class CreateDirectors < ActiveRecord::Migration[5.1]
       t.string :phone
       t.string :type_user
       t.string :token_reset_pass
+      t.integer :disable_count
       t.timestamps
       
     end
