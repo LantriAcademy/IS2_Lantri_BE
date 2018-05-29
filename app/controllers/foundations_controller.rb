@@ -6,7 +6,6 @@ class FoundationsController < ApplicationController
   # GET /foundations
   def index
     @foundations = Foundation.all
-
     render json: @foundations
   end
 
@@ -87,6 +86,6 @@ class FoundationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foundation_params
-      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar, :description, :howToHelp, :contactUs)
+      params.require(:foundation).permit(:name, :direction, :latitude, :longitude, :director_id, :avatar, :description, :howToHelp, :contactUs, :pdf)
     end
 end

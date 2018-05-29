@@ -1,3 +1,3 @@
 class FoundationSerializer < ActiveModel::Serializer
-  attributes :id,:name,:direction,:latitude,:longitude,:avatar,:description,:howToHelp,:contactUs
+  attributes :id,:name,:direction,:latitude,:longitude,:avatar,:description,:howToHelp,:contactUs,:pdf
 end

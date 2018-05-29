@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style = "font-family:'Dosis',sans-serif;color:#56b156;">fUNdaciones</h1>
+    <p>
+      Hola <%= @director.name %>, Tu fundacion <%= @director.foundation.name %>.
+    </p> 
+    <p>Ha tenido <%= Director.info_events(@director) %> suscripciones a eventos activos de su fundacion en esta semana</p>
+    <p>Esperamos que tu fundacion siga creciendo junto a nosotros</p>
+  </body>
+</html>

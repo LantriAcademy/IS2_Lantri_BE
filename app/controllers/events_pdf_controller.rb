@@ -1,16 +1,10 @@
 class EventsPdfController < ApplicationController
 
+
     def show
-        e = Event.find(1)
-        pdf = createPdf(e)
-        send_data pdf.render 
-    end
-    def showById 
         e = Event.find(params[:id])
         pdf = createPdf(e)
         send_data pdf.render 
-    end
-    def destroy
     end
 
     def createPdf(e)
