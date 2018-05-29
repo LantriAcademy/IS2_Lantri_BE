@@ -26,6 +26,7 @@ class SigninContributorController < ApplicationController
                 newcontributor.user = data['given_name']
                 newcontributor.email = data['email'] 
                 newcontributor.phone = 0
+                newcontributor.type_user = "google_user"
                 
                 if newcontributor.save(validate: false)
                     ContributorMailer.welcome_email(newcontributor).deliver_later

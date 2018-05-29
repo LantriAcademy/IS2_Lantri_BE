@@ -26,6 +26,7 @@ class SigninDirectorController < ApplicationController
                 newdirector.user = data['given_name']
                 newdirector.email = data['email'] 
                 newdirector.phone = 0
+                newdirector.type_user = "google_user"
                 
                 if newdirector.save(validate: false)
                     ContributorMailer.welcome_email(newdirector).deliver_later
