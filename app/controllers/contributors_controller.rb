@@ -63,6 +63,7 @@ class ContributorsController < ApplicationController
   def create
     @contributor = Contributor.new(contributor_params)
     @contributor.type_user = "normal_user"
+    @contributor.disable_count = 0
     if @contributor.save
       ContributorMailer.welcome_email(@contributor).deliver_later
       params[:interest].each do |word|
