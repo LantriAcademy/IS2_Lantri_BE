@@ -54,7 +54,12 @@ Rails.application.routes.draw do
       get 'events/:contributor_id', to: 'events#eventscontributor'
       post 'reset_password', to: 'contributors#reset_password'
       post 'change_password', to: 'contributors#change_password'
-      
+      resources :benefiteds do
+        collection do
+          get 'page/:contributor_id/:page', to: 'benefiteds#benefitedscontributor_page'
+          get 'size/:contributor_id', to: 'benefiteds#benefitedscontributor_size'
+        end
+      end
       resources :events do
         collection do
           post '', to: 'contributor_events#create'
