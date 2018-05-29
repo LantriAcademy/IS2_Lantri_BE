@@ -24,7 +24,8 @@ Rails.application.routes.draw do
       get 'stats/benefiteds', to: 'foundations#foundation_age_stats'
       get 'yearevent', to: 'foundations#years_event' 
       get 'yeareventdata', to: 'foundations#years_event_data' 
-      
+      get 'size_tag', to: 'foundations#foundation_size_tag'
+
       resources :benefiteds do
         collection do
           get 'page/:foundation_id/:page', to: 'benefiteds#benefitedsfoundation_page'

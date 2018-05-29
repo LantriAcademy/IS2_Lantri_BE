@@ -57,6 +57,10 @@ class FoundationsController < ApplicationController
     @size = Foundation.ActualSize()
     render json: @size
   end
+  def foundation_size_tag
+    @size = Foundation.ActualSizeTag(params[:userId])
+    render json: @size
+  end
   
   def foundation_age_stats
     @arr = Foundation.GetFundationNumberBenefi(params[:min],params[:max],params[:id])

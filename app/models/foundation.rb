@@ -78,6 +78,16 @@ class Foundation < ApplicationRecord
       return [{"id": year.to_s, "data": arr}]
     end
     
+    def self.GetFundationTagPage(username, page)
+        return Foundation.order(created_at: :desc).limit(6).offset((page.to_i-1)*6)
+    end
+    
+    def self.ActualSizeTag(userId)
+        joinSentence = "INNER JOIN interest_contributors ON interest_contributors.interest_id = interest_foundations.interest_id AND interest_contributors.contributor_id = '"+ userId + "'"
+        return InterestContributor.joins(joinSentence)
+    end
+
+
     #private 
     #def parse_image 
     #    image = Paperclip.io_adapters.for(image_base) 
