@@ -48,6 +48,7 @@ class ContributorsController < ApplicationController
     if @contributor and @contributor.token_reset_pass != nil and @contributor.token_reset_pass == params[:reset_token]
       if @contributor.update(params.require(:contributor).permit(:password,:password_confirmation))
         @contributor.token_reset_pass = nil
+        @contributor.disable_count = 0
         @contributor.save
         render json: {"status": "OK"} ,status: :ok
       else

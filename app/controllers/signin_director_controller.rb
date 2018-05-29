@@ -4,7 +4,9 @@ class SigninDirectorController < ApplicationController
     def create
        director = Director.where(email: params[:email]).first
        logger_sing = ActiveSupport::TaggedLogging.new(Logger.new("login.log"))
-        if director && director.valid_password?(params[:password])
+        if director.disable_count > 5 
+            render json: {"Error ":"account disabled by too many attempts"}, status: :unauthorized
+        elsif director && director.valid_password?(params[:password])
             director.disable_count = 0 
             director.save
             logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign In Director: " + director.email + " SUCCESS") }
@@ -13,7 +15,8 @@ class SigninDirectorController < ApplicationController
             director.disable_count = director.disable_count + 1
             director.save
             logger_sing.tagged("IP: #{request.ip} Date: #{Time.now}") { logger_sing.info ("Sign In Director: " + director.email + " SUCCESS") }
-            if director.disable_count % 5 == 0
+            if director.disable_count == 5
+                DisableAccount.set(wait: 15.minutes).perform_later(director.id,"director")
                #MAILER 
             end
             head(:unauthorized)
@@ -66,5 +69,4 @@ class SigninDirectorController < ApplicationController
             render json: {"Error": e} , status: :unauthorized
         end
     end
-   
 end
