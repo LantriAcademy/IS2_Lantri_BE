@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: helps
+#
+#  id                :integer          not null, primary key
+#  description       :string
+#  startDate         :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  contributor_id    :integer
+#  benefited_id      :integer
+#  support_id        :integer
+#  type_of_help_id   :integer
+#  status_of_help_id :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  startDate: 2018-03-08 20:17:48
+
+two:
+  description: MyString
+  startDate: 2018-03-08 20:17:48

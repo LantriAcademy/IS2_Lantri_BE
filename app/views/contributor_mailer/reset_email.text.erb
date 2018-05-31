@@ -1,0 +1,4 @@
+
+Hola <%= @contributor.name%>, Haz clic <%= Rails.application.secrets.front_url+"/passwordReset?token="+@contributor.token_reset_pass %> Aqui  para restablecer la contraseña de tu cuenta en fUNdaciones.
+El enlace estará activo durante 2 horas. 
+Si no has solicitado restablecer tu contraseña, puedes ignorar este correo electrónico y no se cambiará tu contraseña.
